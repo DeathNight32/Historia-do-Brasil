@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="android-icon-96x96.png" type="image/png">
+    <title>História do Brasil em Três Épocas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        /* Cores profissionais */
+        --azul-profundo: #1a365d;
+        --azul-royal: #2c5282;
+        --verde-floresta: #22543d;
+        --verde-esmeralda: #38a169;
+        --dourado: #d69e2e;
+        --dourado-claro: #f6e05e;
+        
+        /* Tons neutros */
+        --branco: #ffffff;
+        --cinza-claro: #f7fafc;
+        --cinza-medio: #e2e8f0;
+        --cinza-escuro: #4a5568;
+        --preto-suave: #2d3748;
+        
+        /* Espaçamentos */
+        --espaco-pequeno: 0.5rem;
+        --espaco-medio: 1rem;
+        --espaco-grande: 2rem;
+        
+        /* Bordas */
+        --borda-arredondada: 8px;
+        --borda-sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        /* Transições */
+        --transicao-rapida: all 0.2s ease;
+        --transicao-media: all 0.3s ease;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Lato', sans-serif;
+        line-height: 1.8;
+        color: black;
+        background-color: var(--cinza-claro);
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 3rem;
+    }
+    
+    /* Títulos */
+    h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        margin-bottom: var(--espaco-medio);
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+        color: var(--dourado-claro);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+        color: var(--branco);
+    }
+    
+    h3 {
+        font-size: 1.8rem;
+        color: var(--azul-profundo);
+        margin-top: var(--espaco-grande);
+        position: relative;
+        padding-left: var(--espaco-medio);
+    }
+    
+    h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        height: 1.5rem;
+        width: 5px;
+        background: var(--dourado);
+        border-radius: 3px;
+    }
+    
+    h4 {
+        font-size: 1.4rem;
+        color: var(--azul-profundo);
+        margin-top: var(--espaco-grande);
+    }
+    
+    /* Container principal */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--espaco-medio);
+    }
+    
+    /* Cabeçalho */
+    header {
+        background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-royal) 100%);
+        color: white;
+        padding: 6rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 3rem;
+        box-shadow: var(--borda-sombra);
+    }
+    
+    header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://assets-global.website-files.com/60ff690cd7b0537edb99a29a/631676ef35c1cb7727778ec6_Significado%20das%20cores%20da%20Bandeira%20do%20Brasil.jpg') center/cover;
+        opacity: 0.15;
+        z-index: 0;
+    }
+    
+    .header-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .subtitle {
+	text-align: center;
+        font-size: 1.25rem;
+        font-weight: 300;
+        letter-spacing: 1px;
+        max-width: 600px;
+        margin: 0 auto;
+        color: var(--branco);
+    }
+    
+    /* Seções de época */
+    .era-section {
+        background: var(--branco);
+        border-radius: var(--borda-arredondada);
+        box-shadow: var(--borda-sombra);
+        margin-bottom: 3rem;
+        overflow: hidden;
+        transition: var(--transicao-media);
+    }
+    
+    .era-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .era-header {
+        padding: 2rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .era-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+        z-index: 0;
+    }
+    
+    .colonial .era-header {
+        background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-royal) 100%);
+    }
+    
+    .imperial .era-header {
+        background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-claro) 100%);
+        color: var(--preto-suave);
+    }
+    
+    .republicano .era-header {
+        background: linear-gradient(135deg, var(--verde-floresta) 0%, var(--verde-esmeralda) 100%);
+    }
+    
+    .era-content {
+        padding: 2.5rem;
+    }
+    
+    .imperial-content h3 {
+        color: var(--azul-profundo);
+    }
+    
+    .imperial-content h3::before {
+        background: var(--dourado);
+    }
+    
+    /* Tipografia e conteúdo */
+    p {
+        margin-bottom: var(--espaco-medio);
+        text-align: justify;
+        line-height: 1.7;
+        color: black;
+    }
+    
+    strong {
+        font-weight: 700;
+		color: var(--azul-profundo);
+    }
+	
+	strong-2{
+        font-weight: 700;
+		color: var(--branco);
+    }
+    
+    ul {
+        list-style-position: inside;
+        margin: var(--espaco-medio) 0;
+    }
+    
+    li {
+        margin-bottom: var(--espaco-pequeno);
+        position: relative;
+        padding-left: 1.5rem;
+        line-height: 1.6;
+    }
+    
+    li::before {
+        content: "•";
+        color: var(--dourado);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+    
+    .imperial-content li::before {
+        color: var(--azul-profundo);
+    }
+    
+    /* Imagens e mídia */
+    .content-image {
+        width: 350px;
+        max-width: 100%;
+        height: auto;
+        margin: var(--espaco-grande) auto;
+        display: block;
+        border-radius: var(--borda-arredondada);
+        box-shadow: var(--borda-sombra);
+    }
+    
+    .content-image-personagens {
+        width: 500px;
+        max-width: 100%;
+        height: auto;
+		margin-left: 255px;
+    }
+    
+    .content-mapa-capitanias {
+	margin-left: 130px;
+	}
+    
+    .content-image-Batalha-dos-Guararapes {
+        width: 750px;
+        max-width: 100%;
+        height: auto;
+		margin-left: 135px;
+    }
+    
+    .image-caption {
+        color: black;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+	
+	.subtitulo-image {
+	    text-align: center;
+        color: black;
+        margin-bottom: var(--espaco-grande);
+        font-size: 1rem;
+    }
+    
+    .content-video {
+        width: 100%;
+        max-width: 560px;
+        height: 315px;
+        margin: var(--espaco-grande) auto;
+        display: block;
+        border-radius: var(--borda-arredondada);
+        box-shadow: var(--borda-sombra);
+    }
+    
+	.titulo-video {
+	text-align: center;
+	}
+	
+    /* Boxes de informação */
+    .info-box {
+        background-color: var(--cinza-medio);
+        border-left: 4px solid var(--dourado);
+        padding: var(--espaco-medio);
+        margin: var(--espaco-grande) 0;
+        border-radius: 0 var(--borda-arredondada) var(--borda-arredondada) 0;
+        transition: var(--transicao-media);
+    }
+    
+    .info-box:hover {
+        transform: translateX(5px);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .imperial-content .info-box {
+        border-left-color: var(--azul-profundo);
+    }
+    
+    /* Rodapé */
+    footer {
+        background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-royal) 100%);
+        color: white;
+        text-align: center;
+        padding: 3rem 0;
+        margin-top: 4rem;
+    }
+    
+    .footer-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    footer p {
+        margin-bottom: 0.5rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Divisor entre seções */
+    .divider {
+        height: 4px;
+        background: linear-gradient(90deg, var(--verde-floresta) 0%, var(--dourado) 50%, var(--azul-profundo) 100%);
+        margin: 3rem 0;
+        border-radius: 2px;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+        }
+        
+        .era-content {
+            padding: 1.5rem;
+        }
+        
+        header {
+            padding: 4rem 0;
+        }
+        
+        .content-video {
+            margin-left: 0;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2rem;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+        }
+        
+        .era-header {
+            padding: 1.5rem;
+        }
+    }
+</style>
+</head>
+
+       <link rel="icon" type="image/x-icon" href="/downloads/favicon-96x96.ico">
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1>História do Brasil</h1>
+            <p class="subtitle"><strong-2>Uma jornada cronológica através das três grandes épocas que moldaram nossa nação</strong-2></p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Período Colonial -->
+        <div class="era-section colonial">
+            </div>
+            <div class="era-content">
+                        <div class="era-section colonial">
+            <div class="era-header">
+                <h2>Período Colonial (1500-1822)</h2>
+            </div>
+            <div class="era-content">
+                <h3>Era Colonial Brasileira (1500-1822): Política, Economia, Sociedade e Conflitos</h3>
+                <p>Brasil Colônia é o período que se estende de 1530, com a missão “exploradora” de Martim Afonso de Souza, a 1815, quando o então Estado do Brasil tornou-se Reino de Portugal, Brasil e Algarves. Foi durante esses anos que grande parte da extensão territorial que o Brasil tem hoje foi conquistada por meio de diversos conflitos com tamoios, tupinambás, espanhóis, holandeses, franceses, entre outros povos. A colonização do Brasil foi um processo complexo que moldou a identidade nacional, estabelecendo estruturas políticas, econômicas e sociais que perdurariam por séculos. Desde a chegada dos portugueses em 1500 até a independência em 1822, o Brasil passou por transformações profundas, marcadas pela exploração de recursos naturais, escravidão, conflitos armados e a formação de uma sociedade hierárquica. </p>
+                
+                <h3>Política e Administração Colonial</h3>
+				
+                <h4><strong>Período Pré-Colonial (1500-1530)</strong></h4>
+                <p>O Período Pré-Colonial diz respeito aos anos que antecederam a missão “colonizadora” chefiada por Martim Afonso de Souza (administrador colonial português) em 1530. Após a chegada da expedição marítima portuguesa, liderada por Pedro Álvares Cabral, em 22 de abril de 1500, nas terras que, posteriormente, viriam a ser chamadas de Brasil, Portugal passou a ocupar pequenos pontos isolados na costa marítima brasileira.
+                Um grupo de cristãos-novos (judeus convertidos ao cristianismo e seus descendentes) recebeu o monopólio de extração do pau-brasil, mas se limitou ao envio de apenas quatro expedições exploradoras com o objetivo de fazer o reconhecimento e mapeamento do território “descoberto”.
+                Ainda sem nome, a terra passou a ser chamada, nas cartas de Pero Vaz de Caminha e Mestre João, escritas em 1º de maio de 1500, de Vera Cruz. Outros nomes surgiram depois, como Terra dos Papagaios e Santa Cruz. O nome Brasil começou a aparecer em fontes a partir de 1512 e, posteriormente, acabou oficializando-se, sobretudo após 1530, com a nomenclatura “Estado do Brasil”.
+                No começo daquele século, o Império Português estava voltado para as Índias, que era a forma como os portugueses referiam-se à região que hoje consiste na Índia. Desde as Cruzadas, o comércio com o Oriente desenvolvera-se muito com os reinos cristãos situados na Europa Ocidental e Meridional. Contudo, desde a tomada de Constantinopla pelos otomanos em 1453, esse comércio começou a entrar em declínio. Quando as barreiras de comércio tornaram-se intransponíveis, Portugal voltou-se para o território americano. Nesse momento, começou, portanto, o que a historiografia chamou de Período Colonial.</P>
+                
+				<h4><strong>Antecedentes da chegada dos portugueses</strong></h4>
+				
+                <p>A chegada dos portugueses ao Brasil estava relacionada com o pioneirismo de Portugal e, depois, da Espanha, durante o desenvolvimento das grandes navegações marítimas. Primeiramente, nesse processo, deve-se levar em consideração a consolidação da monarquia em Portugal no século XIV, a qual garantia maior centralização de poder e estabilidade política.
+                Essa centralização do poder garantiu a Portugal um crescimento da sua atividade mercantil, e isso está muito relacionado com a sua proximidade com importantes centros do mundo islâmico. Além disso, Lisboa recebeu grandes investimentos de genoveses, interessados em desenvolver o comércio daquela região.
+                O impulso comercial que esse território sofreu, aliado à condição geográfica da região, possibilitou aos portugueses o desenvolvimento da navegação marítima. Atribui-se também uma relativa importância da Escola de Sagres a essa expansão marítima portuguesa. A geografia, por seu lado, facilitava esse movimento pela posição peninsular de Portugal e pela sua proximidade com as ilhas atlânticas e com as correntes marítimas do Oceano Atlântico.
+                O processo de expansão marítimo português levou o país a realizar uma série de “descobertas”, com o achamento das ilhas atlânticas, ao longo do século XIV, como Madeira e Açores. Além disso, os portugueses conseguiram atravessar o Cabo da Boa Esperança, no litoral sul da África, em direção à Índia. Esse processo expansionista desembocou na chegada dos portugueses ao Brasil, após os espanhóis terem anunciado sua chegada na América em 1492.</p>
+				
+                <h4><strong>Chegada dos portugueses ao Brasil</strong></h4>
+
+                <p>A chegada dos portugueses ao Brasil ocorreu com a expedição liderada por Pedro Álvares Cabral, composta por treze caravelas que partiram de Lisboa no dia 9 de março de 1500. Essa expedição tinha como destino final a Índia, porém, durante o trajeto, desviou-se do caminho original e acabou alcançando o Brasil, na região de Porto Seguro, em 22 de abril de 1500.
+                Existe um certo debate a respeito da intencionalidade da expedição de Pedro Álvares Cabral em sua vinda à América. Alguns historiadores afirmam que existia a intenção de Cabral em desviar-se do trajeto original. Outros especialistas, porém, discordam dessa ideia e afirmam que a chegada dos portugueses ao Brasil foi um evento ocasional.
+                A chegada dos portugueses ao Brasil iniciou o período conhecido como Pré-colonial, que foi caracterizado pelo aparente desinteresse de Portugal em relação às terras brasileiras. Isso ocorreu, sobretudo, porque o interesse da elite econômica portuguesa estava mais voltado ao desenvolvimento do comércio com a Índia, e por causa das dificuldades em averiguar as possibilidades econômicas do novo território.
+                Nesse momento, a política adotada pelos portugueses no Brasil foi a mesma implantada na costa do litoral africano, e, assim, incentivou-se a construção de feitorias, como as quatro construídas em Pernambuco, Cabo Frio, Rio de Janeiro e na Baía de Todos os Santos|1|. Essas feitorias funcionavam como entrepostos comerciais que armazenavam as mercadorias para serem transportadas para a Europa.
+                As primeiras iniciativas de exploração do território brasileiro foram entregues por Portugal para Fernão de Noronha, no período entre 1503 e 1505. Durante essas explorações, iniciou-se a principal atividade econômica do Brasil da fase pré-colonial: a exploração do pau-brasil. A rentabilidade dessa mercadoria devia-se, principalmente, à utilização da madeira para a produção de tinta. A exploração dessa matéria-prima seguiu como prática econômica no Brasil até o século XIX – apesar de ter sido mais intensa durante esse período exploratório inicial.
+                A extração do pau-brasil era feita com a mobilização do trabalho dos indígenas por meio do escambo. Os indígenas realizavam o corte e o transporte das toras da madeira até as feitorias e eram pagos por quinquilharias em geral, tais como espelhos, baús de metal, foices etc. Os nativos também forneciam aos portugueses mercadorias como a farinha.</p>
+
+                <h4><strong>Capitanias Hereditárias (1534-1549)</strong></h4>
+                <p>O declínio do comércio com a Índia e as ameaças de invasões estrangeiras no Brasil, principalmente dos franceses, mobilizaram Portugal para ampliar a colonização do Brasil. A partir de 1534, o território brasileiro foi dividido em quinze capitanias, e sua administração foi entregue a pessoas da pequena nobreza de Portugal, que deveriam desenvolver e garantir a lucratividade de sua capitania. Apenas <strong>Pernambuco (sob Duarte Coelho)</strong> e <strong>São Vicente (sob Martim Afonso de Sousa)</strong> prosperaram, devido ao cultivo da cana-de-açúcar. O fracasso do sistema levou à centralização do poder. </p>
+                
+                <img src="https://1.bp.blogspot.com/-1w1HYqNK_ec/VkIc7ibHxQI/AAAAAAAACOs/Sp1EkOlj_tE/s1600/NOVO%2BMAPA%2BCAPITANIAS%2BHEREDIT%25C3%2581RIAS.jpg" alt="Mapa das Capitanias Hereditárias do Brasil" Class="content-mapa-capitanias">
+                <p class="subtitulo-image">Mapa das Capitanias Hereditárias do Brasil (1534)</p>
+                
+                <div class="info-box">
+                    <h4><strong>O Tratado de Tordesilhas</strong></h4>
+                    <p>O Tratado de Tordesilhas foi firmado em 7 de junho de 1494, na cidade de Tordesilhas, entre os reinos de Portugal e Castela (Espanha). O acordo surgiu em resposta à crescente competição entre as duas potências ibéricas pela posse de novas terras descobertas durante as Grandes Navegações.
+                    Após a chegada de Cristóvão Colombo à América em 1492, a Espanha buscou garantir legalmente suas novas possessões, levando à necessidade de um tratado que evitasse conflitos entre os dois reinos.
+                    O Tratado de Tordesilhas é considerado um marco na história das relações internacionais e na exploração marítima, pois foi um dos primeiros acordos a dividir o mundo entre potências coloniais. Ele ilustra as complexas dinâmicas de poder e a luta por recursos durante a Era das Descobertas.</p>
+                </div>
+				
+				<div class="info-box">
+                    <h4><strong>O Tratado Madrid</strong></h4>
+					<p><strong>Contexto Historico</strong></p>
+                    <p>O Tratado de Madrid foi um acordo diplomático firmado entre os reinos de Portugal e Espanha, representados pelos reis João V e Fernando VI, respectivamente. O tratado surgiu em um contexto de disputas territoriais que se intensificaram após o fim da União Ibérica (1580-1640), quando as fronteiras entre os dois países se tornaram mais fluidas e as reivindicações territoriais se tornaram mais complexas.
+                    <p><strong>Principais Termos do Tratado</strong></p>
+					<ul>
+					<li>Substituição do Tratado de Tordesilhas: O Tratado de Madrid visava substituir o Tratado de Tordesilhas, que já não era mais respeitado. Ambos os países reconheceram que haviam violado os termos do tratado anterior e concordaram em estabelecer novos limites baseados no princípio do uti possidetis, ita possideatis, que afirma que quem ocupa um território deve tê-lo reconhecido como seu.</li>
+					<li>Cessão de Territórios: Portugal cedeu a Colônia do Sacramento (atual Uruguai) para a Espanha, enquanto a Espanha reconheceu a posse portuguesa de várias áreas ocupadas, consolidando a expansão territorial do Brasil.</li>
+					</ul>
+					<p><strong>Consequências</strong></p>
+					<p>O Tratado de Madrid teve um impacto significativo nas fronteiras da América do Sul, contribuindo para a definição das atuais fronteiras do Brasil. No entanto, o tratado não durou muito tempo, sendo substituído pelo Tratado de El Pardo em 1761, devido a novas disputas territoriais que surgiram entre os dois países. Este tratado é considerado um marco importante na história colonial da América do Sul, pois ajudou a estabelecer um entendimento mais claro entre as potências coloniais sobre a posse e a administração de terras na região.</p>
+			    </div>
+				
+				<div class="info-box">
+                    <h4><strong>O Tratado El Pardo</strong></h4>
+					<p><strong>Contexto Historico</strong></p>
+                    <p>O Tratado de El Pardo foi assinado em um contexto de tensões entre Portugal e Espanha, especialmente devido à resistência dos indígenas e dos jesuítas na região das Missões Orientais, no atual Uruguai. A Guerra Guaranítica e a morte do rei espanhol Fernando VI, sucedido por Carlos III, levaram à necessidade de revisar os acordos anteriores.</p>
+                    <p><strong>Conteúdo do Tratado</strong></p>
+					<ul>
+					<li>Anulação do Tratado de Madrid: O tratado revogou todas as disposições do Tratado de Madrid de 1750, que havia estabelecido limites territoriais difíceis de implementar.</li>
+					<li>Recuperação da Colônia de Sacramento: Portugal recuperou a Colônia de Sacramento, que havia sido um ponto de conflito entre as duas coroas.</li>
+					<li>Revisão de limites: Foram estabelecidas novas diretrizes para a demarcação de fronteiras na América do Sul, visando evitar futuros conflitos.</li>
+					<ul>
+					<p><strong>Implicações</strong></p>
+					<p>O Tratado de El Pardo teve um impacto significativo nas relações entre Espanha e Portugal, representando uma tentativa de restabelecer a paz e a cooperação na região. No entanto, as tensões persistiram, e o tratado foi um passo em um processo mais amplo de negociação e conflito no contexto colonial. Este tratado é um exemplo de como as relações internacionais e os interesses coloniais das potências europeias influenciaram a configuração das fronteiras na América do Sul.</p>
+			    </div>
+					 
+                <h3><strong>Governo-Geral (1549-1808)</strong></h3> 
+                <p>Em 1549, Tomé de Sousa foi nomeado o primeiro governador-geral, estabelecendo Salvador como capital. A administração colonial passou a contar com três principais cargos:</p>
+                
+                <h3><strong>Ouvidor-mor (justiça)</strong></h3>
+                <p><strong>O que fazia?</strong></p>
+                <p>O Ouvidor-mor era o principal representante da justiça na colônia, responsável por aplicar as leis portuguesas e resolver disputas.</p>
+                
+                <p><strong>Principais obrigações:</strong></p>
+                <ul>
+                    <li>Aplicar a justiça – Julgava crimes e conflitos entre colonos, indígenas e autoridades</li>
+                    <li>Fiscalizar funcionários – Investigava abusos de poder por parte de outros administradores coloniais</li>
+                    <li>Organizar as ouvidorias – Criava tribunais locais nas capitanias</li>
+                    <li>Relatar à Coroa – Enviava informações sobre a situação jurídica da colônia a Portugal</li>
+                </ul>
+                
+                <p><strong>Exemplos de Atuação:</strong></p>
+                <ul>
+                    <li>Punir senhores de engenho que cometiam excessos contra escravizados</li>
+                    <li>Investigar corrupção de capitães-mores</li>
+                </ul>
+                
+                <h3><strong>Capitão-mor (defesa)</strong></h3>
+                <p><strong>O que fazia?</strong></p>
+                <p>O Capitão-mor era o chefe militar da colônia, encarregado da proteção contra invasões e revoltas.</p>
+
+                <p><strong>Principais obrigações:</strong></p>
+                <ul>
+                    <li>Defender o território – Organizava tropas contra invasores estrangeiros (franceses, holandeses)</li>
+                    <li>Manter a ordem – Reprimia rebeliões de indígenas, escravizados ou colonos insatisfeitos</li>
+                    <li>Comandar as milícias – Recrutava soldados e organizava a defesa das vilas</li>
+                    <li>Fiscalizar fortalezas – Supervisionava a construção e manutenção de fortificações</li>
+                </ul>
+
+                <p><strong>Exemplos de Atuação:</strong></p>
+                <ul>
+                    <li>Liderar a resistência contra os holandeses em Pernambuco (século XVII)</li>
+                    <li>Combater quilombos como o de Palmares</li>
+                </ul>
+                
+                <h3><strong>Provedor-mor (finanças)</strong></h3>
+                <p><strong>O que fazia?</strong></p>
+                <p>O Provedor-mor era o responsável pela administração financeira da colônia, garantindo que os impostos fossem coletados e enviados a Portugal.</p>
+
+                <p><strong>Principais obrigações:</strong></p>
+                <ul>
+                    <li>Cobrar impostos – Fiscalizava o pagamento do quinto do ouro e outros tributos</li>
+                    <li>Controlar gastos – Geria os recursos da Coroa na colônia</li>
+                    <li>Supervisionar o comércio – Impedia o contrabando e fraudes alfandegárias</li>
+                    <li>Financiar obras públicas – Custear a construção de estradas, portos e edifícios governamentais</li>
+                </ul>
+
+                <p><strong>Exemplos de Atuação:</strong></p>
+                <ul>
+                    <li>Aplicar a Derrama (cobrança forçada de impostos atrasados) em Minas Gerais</li>
+                    <li>Fiscalizar o comércio de açúcar e ouro para evitar sonegação</li>
+                </ul>
+                
+                <p>A Companhia de Jesus, liderada por Manuel da Nóbrega e José de Anchieta, desempenhou papel crucial na catequização indígena e na educação durante todo o período colonial.</p>
+            
+			    <h3>Economia Colonial: Ciclos e Exploração</h3>
+				
+				<h3>Ciclo do Pau-Brasil (1500-1530)</h3>
+				
+                <p>O ciclo do pau-brasil ocorreu durante a fase pré-colonial (1500-1530) do Brasil. Foi o primeiro produto a ser explorado pelos portugueses durante a época da colonização.
+                O pau-brasil é uma árvore nativa da Mata Atlântica que já era utilizada pelos índios para o tingimento de tecidos. Assim, quando os portugueses notaram seu uso, começaram a explorar o pau-brasil e enviar para a Europa, onde já era muito apreciada, na medida que os árabes já comercializam uma planta tingidora que vinha da Índia. A tinta do pau-brasil é de coloração vermelha e era encontrada sobretudo nas regiões costeiras, o que facilitou ainda mais sua exploração. Desde o início do século XVI, a Coroa Portuguesa recebia valores altos para a exploração do pau-brasil.
+                Foram necessárias três expedições para realizar a extração do pau-brasil: primeira expedição (1502), segunda expedição (1503) e terceira expedição (1504). No entanto, durante anos de exploração, o pau-brasil chegou em processo de extinção. Isso dificultou a economia da metrópole, que rapidamente desenvolveu outras formas de enriquecer, por exemplo, com a produção da cana-de-açúcar, que já era cultivada em colônias portuguesas.</p>
+                
+				<h4><strong>Curiosidade</strong></h4>
+				
+				<p>No início do século XVI os portugueses utilizaram o processo de trocas com os índios para conseguirem o pau-brasil.
+                Mais tarde, eles começaram a escravizar os índios, obrigando-os a cortarem as árvores, uma vez que os escravos africanos eram muito caros.
+                Essa imposição foi bem difícil para os portugueses, na medida que os índios fugiam e conheciam melhor o território. Além disso, eles contraíram diversas doenças do homem branco, o que levou a mortandade de milhares de indígenas.
+                Foi em 1570 que a escravidão indígena foi proibida pela primeira vez, no entanto, ela permaneceu até o final do século XVIII. Aos poucos, os índios foram substituídos pelos escravos africanos.
+                Ainda que a maior parte da exploração da madeira tenha sido realizada na primeira década, ela permaneceu até o século seguinte, quando perdeu sua importância no mercado consumidor. Isso porque o transporte era dispendioso e outro produto começava a ser comercializado: o açúcar.</p>
+				
+				<p><strong>Dispendioso:</strong>que exige muito dispêndio (de dinheiro); que dá despesa; caro</p>
+				
+                <h3>Ciclo do Açúcar (1530-1700)</h3>
+				
+                <p>Introduzido por Martim Afonso de Sousa, o açúcar tornou-se a base da economia colonial. O sistema plantation combinava:</p>
+
+                <h4>Monocultura (cana-de-açúcar)</h4>
+				
+				<p>A monocultura da cana-de-açúcar no Brasil começou no século XVI, especialmente nas regiões Nordeste, São Paulo e Minas Gerais, devido às condições climáticas e características do solo favoráveis ao cultivo. Essa prática se tornou a base da economia agrícola brasileira, voltada principalmente para a exportação. A cana-de-açúcar é uma das principais monoculturas do país, desempenhando um papel crucial na produção e exportação de commodities agrícolas. Essa monocultura, embora tenha contribuído para o desenvolvimento econômico, também levanta preocupações sobre os impactos ambientais e a sustentabilidade da agricultura.</p>
+
+                <h4>Latifúndios (grandes propriedades)</h4>
+				
+				<p>Latifúndio corresponde a uma extensa propriedade agrícola privada, geralmente não exploradas economicamente, portanto improdutivas. Quando exploradas são destinadas ao cultivo de um único produto agrícola (monocultura), com finalidade de abastecer, comumente, o mercado externo, devido à produção em larga escala. Uma das principais características do latifúndio é a concentração das propriedades nas mãos de poucos proprietários rurais, famílias ou empresas. Essa concentração fundiária está associada a diversos conflitos e lutas por terra no Brasil.</p>
+
+                <h4>Escravidão africana (após a resistência indígena e pressão jesuítica)</h4>
+				
+				<p>A escravidão africana no Brasil se tornou a principal forma de trabalho escravo após a resistência indígena e a pressão jesuítica. Os portugueses, ao invés de capturar indígenas, começaram a explorar o tráfico negreiro, que trouxe uma nova forma de mão de obra forçada para a colônia. Ela foi fundamental para a economia colonial e imperial do Brasil, sendo utilizada em plantações de açúcar, mineração e outras atividades. Os escravizados africanos eram tratados como mercadorias, sem direitos, sujeitos a castigos físicos e separação de famílias.</p>
+
+                <p><strong>Pernambuco e Bahia foram os principais centros produtores. Os holandeses, após serem expulsos em 1654, estabeleceram concorrência nas Antilhas, enfraquecendo o monopólio português.</strong></p>
+
+
+                <h3>Drogas do Sertão</h3>
+				<p>As drogas do sertão eram produtos extraídos da Floresta Amazônica no século XVII, comercializados pelos portugueses na Europa para consolidar sua presença no Norte do Brasil e evitar invasões de franceses, holandeses e ingleses. A mão de obra utilizada era indígena, sobretudo por meio de missões jesuíticas e expedições bandeirantes.</p>
+				
+				<p><strong>Principais produtos:</strong></p>
+				<ul>
+				<li>Guaraná</li>
+				<li>Salsa (ou salsaparrilha)</li>
+				<li>Urucum</li>
+				<li>Cacau</li>
+				<li>Baunilha</li>
+				<li>Castanha-do-pará</li>
+				<ul>
+				
+				<p><strong>Contexto histórico:</strong></p>
+				<p>Com o declínio do comércio de especiarias asiáticas, as drogas do sertão ganharam importância econômica. Portugal fortaleceu sua ocupação na Amazônia, construindo fortes como o de Belém, enquanto jesuítas e bandeirantes disputavam o controle da extração.</p>
+				
+				<p><strong>Declínio:</strong></p>
+				<p>No século XVIII, a descoberta de ouro em Minas Gerais deslocou o eixo econômico para o centro-sul do Brasil, reduzindo o interesse nas drogas do sertão. A mão de obra escravizada foi redirecionada para a mineração, marcando o fim desse ciclo comercial.</p>
+				
+
+                <h3>Ciclo do Ouro (1695-1800)</h3>
+				
+                <p>A descoberta de ouro em Minas Gerais (1695) provocou uma corrida migratória e a fundação de cidades como Ouro Preto e Mariana. A Coroa portuguesa impôs:</p>
+
+                <h4>O Quinto (20% do ouro extraído)</h4>
+				
+				<p>O Quinto do Ouro era um imposto cobrado pela Coroa Portuguesa sobre a extração de ouro no Brasil durante o período colonial. Este imposto correspondia a 20% do ouro extraído, que era enviado diretamente para a Coroa. A cobrança do Quinto gerou grande insatisfação entre os colonos, que o consideravam abusivo e contribuíram para várias revoltas, como a Inconfidência Mineira. As Casas de Fundição, onde o ouro era fundido e o imposto era retirado, também foram vistas como um obstáculo para a liberdade econômica dos colonos</p>
+
+                <h4>A Derrama (cobrança forçada de impostos atrasados)</h4>
+				
+				<p>Mecanismo de recolhimento de tributos para fazer face a déficits orçamentários da Coroa. A criação e regulamentação da derrama, por meio do alvará régio de 3 de dezembro de 1750, se inseriam no âmbito de uma política ostensiva de restrições e exigências financeiras que sustentavam o pacto colonial, com o objetivo de combater o contrabando e a evasão fiscal. Os descaminhos do ouro conduziram a medidas de reforma da administração pombalina para Minas Gerais, dentre as quais se destaca a decretação da derrama, cuja primeira aplicação ocorreu entre os anos de 1763-1764. A cobrança forçada dos impostos atrasados buscava arrecadar 17 arrobas de ouro correspondentes aos 13 anos de quinto insuficiente. As sucessivas derramas decretadas em Minas Gerais entre 1764 e 1777 revelam que, antes de ser opressiva, a política ilustrada de Portugal buscou envolver os mineiros na tarefa de arrecadação do quinto, além de estreitar seus vínculos com a metrópole. Quanto mais intenso o contrabando, maior seria a possibilidade do não preenchimento da cota aurífera nas Casas de Fundição, dando causa, por conseguinte, ao acometimento da derrama. Dessa forma, articulava-se uma política fazendária em que o súdito, deixando de ser apenas alvo da carga tributária, passava a participar diretamente nos esforços de arrecadação.</p>
+
+                <p><strong>A exploração descontrolada levou ao esgotamento das minas no século XVIII.</strong></p>
+				
+				
+                <h3>Religião e Sociedade</h3>
+				
+				<h4><strong>A Igreja Católica</strong></h4>
+				
+                <h4>Os jesuítas foram fundamentais na colonização, atuando na:</h4>
+
+                <p>Catequese indígena (reduções missionárias)</p>
+
+                <p>Educação (fundação de colégios como o da Bahia)</p>
+
+                <p>Controle social (imposição de valores cristãos)</p>
+
+                <p><strong>Conflitos entre jesuítas e colonos sobre a escravização indígena levaram à substituição por mão de obra africana.</strong></p>
+
+                <h4><strong>Estrutura Social</strong></h4>
+
+                <h4>A sociedade colonial era rigidamente estratificada:</h4>
+
+                <p>Elite branca (senhores de engenho, altos funcionários)</p>
+
+                <p>Camadas médias (comerciantes, artesãos, clero)</p>
+
+                <p>Escravizados (africanos e indígenas)</p>
+
+                <p><strong>A escravidão africana tornou-se predominante, com cerca de 5 milhões de pessoas traficadas até o século XIX</strong></p>
+				
+                <h3><strong>Invasões Estrangeiras</strong></h3>
+
+                <h4>Franceses:</h4> 
+				
+				<h4><strong>França Antártica (1555-1567, Rio de Janeiro) - derrotados por Mem de Sá</strong></h4>
+				<p>Os franceses estiveram presentes no Brasil desde os primeiros anos do período pré-colonial, contrabandeando pau-brasil. Contudo, em 1555, um grupo de franceses huguenotes (protestantes), liderado por Villegaignon e Coligny, fundaram uma colônia francesa na região do Rio de Janeiro conhecida como França Antártica. Os objetivos desse grupo eram iniciar a dominação francesa no Brasil, entrar na exploração mercantil de nossas riquezas e dar abrigo aos protestantes perseguidos, na França, pelo governo católico. A invasão francesa ao Rio de Janeiro, entre 1555 e 1567, está estreitamente ligada ao Tratado de Tordesilhas, visto que os reis da França não aceitavam a divisão do mundo entre espanhóis e portugueses. Em novembro de 1555, uma expedição de 600 pessoas, constituída de católicos, protestantes e criminosos recrutados nas prisões francesas, aportou na Baía da Guanabara, sob o comando do almirante Nicolau Durand de Villegaignon. O local escolhido para sede da colônia foi a ilha de Sergipe, hoje denominada Villegaignon, onde, com o apoio dos índios,  foi construído o Forte de Coligny.</p>
+				<img src="https://www.coladaweb.com/wp-content/uploads/2014/12/Franca-Antartica.png" alt="" class="content-image">
+                <p class="subtitulo-image">Mapa da França Antártica feito pelos franceses da época e a Baía de Guanabara.</p>
+				<p>Os franceses trataram de se aliar aos índios locais. Fazendo contrabando de pau-brasil, os franceses negociavam diretamente com os indígenas. Para facilitar esse contato, procuraram conhecer e assimilar os seus hábitos, o que ajudou a realizar a aliança com os tupinambás, indígenas que habitavam o litoral e que haviam se tornado inimigos dos portugueses, especialmente quando estes passaram a escravizá-los, no início da colonização do Brasil. Os colonos franceses se aproveitaram disso na sua luta contra os portugueses pela posse do Brasil. Aliaram-se aos índios que haviam feito uma revolta, a chamada Confederação dos Tamoios, e ameaçavam atacar as feitorias e os postos lusitanos do litoral. Prevendo o desastre que seria um levante de índios aliados às tropas francesas que ocupavam o Rio de Janeiro, os jesuítas Manuel da Nóbrega e José de Anchieta procuraram negociar a paz. Ofereceram-se como reféns dos índios e, durante três meses, negociaram com eles, até convencer o cacique Kunhambebe a depor as armas.</p>
+				<p><strong>A Expulsão dos Franceses da França Antártica: Conflito e Estratégia no Brasil Colonial</strong></p>
+				<p>No século XVI, enquanto Portugal consolidava sua presença no Brasil, a França desafiava o Tratado de Tordesilhas, buscando estabelecer suas próprias colônias em terras portuguesas. Em 1555, liderados pelo almirante Nicolas Durand de Villegagnon, os franceses desembarcaram na Baía de Guanabara, um território ainda pouco ocupado pelos lusitanos. Ali, fundaram a França Antártica, uma colônia que serviria tanto como refúgio para huguenotes (protestantes perseguidos na França) quanto como base para o comércio de pau-brasil e a disputa pelo controle do Atlântico Sul.</p>
+				<p>Villegagnon escolheu a Ilha de Serigipe (atual Ilha Villegaignon) para erguer o Forte Coligny, uma estrutura defensiva com cinco baterias de canhões voltadas para o mar, projetada para resistir a ataques navais. Os franceses também se espalharam por outras áreas estratégicas, como Uruçu-mirim (hoje Flamengo) e a Ilha do Governador, consolidando uma presença militar e comercial. Um dos fatores cruciais para a permanência francesa foi a aliança com os povos Tamoios e Tupinambás, que viam os portugueses como invasores. Os franceses, ao contrário dos lusitanos, adotaram uma abordagem mais diplomática, praticando o cunhadismo (casamentos com indígenas) e oferecendo armas de fogo em troca de apoio. Essa união resultou na Confederação dos Tamoios, uma coalizão de tribos disposta a expulsar os portugueses do litoral.</p>
+				<p>A Coroa Portuguesa, alarmada com a presença francesa, ordenou ao governador-geral Mem de Sá que organizasse a expulsão dos invasores. Em 1560, ele partiu de Salvador com uma frota composta por duas naus e oito embarcações menores, carregando soldados, colonos e jesuítas. O ataque inicial ao Forte Coligny foi devastador: os portugueses usaram artilharia pesada para bombardear as defesas francesas, seguido por um desembarque de tropas que incendiaram o forte. No entanto, sem recursos para uma ocupação prolongada, os portugueses recuaram, permitindo que os franceses retomassem posições. A resistência francesa se manteve graças ao apoio indígena, mas os jesuítas Manuel da Nóbrega e José de Anchieta conseguiram minar essa aliança. Através de negociações, firmaram o Armistício de Iperoig, convencendo os Tamoios a abandonar os franceses em troca de promessas de paz e proteção.</p>
+				<p>Em 1565, Portugal enviou reforços liderados por Estácio de Sá, sobrinho de Mem de Sá. Com uma frota ampliada e o apoio crucial do líder indígena Araribóia (dos Temiminós), os portugueses lançaram uma ofensiva decisiva. A estratégia combinou ataques navais com desembarques anfíbios, enquanto Araribóia e seus guerreiros atacavam por terra, flanqueando as posições francesas. A batalha culminou em 20 de janeiro de 1567, quando as forças luso-indígenas cercaram os últimos redutos franceses. Os combates foram brutais: os franceses, armados com mosquetes e canhões, resistiram ferozmente, mas foram superados pelo número e pela tática de cerco. Estácio de Sá, porém, foi ferido por uma flecha envenenada e morreu semanas depois, tornando-se um mártir da conquista.</p>
+				<p>Com a vitória, os portugueses fundaram a Cidade de São Sebastião do Rio de Janeiro, em homenagem ao rei D. Sebastião e ao santo padroeiro. Araribóia foi recompensado com terras na região, onde mais tarde surgiria Niterói. A expulsão dos franceses marcou o fim da França Antártica, mas não das ambições gaulesas no Brasil. Em 1612, eles retornariam no Maranhão, fundando a França Equinocial, só derrotados em 1615. Para Portugal, a vitória no Rio consolidou o domínio sobre o litoral e acelerou a colonização, transformando a região em um ponto estratégico para o império ultramarino. A guerra também evidenciou a importância das alianças indígenas e da estratégia militar combinada, mostrando que, no Brasil colonial, a sobrevivência dependia tanto de armas quanto de diplomacia.</p>
+				
+				
+                <h3><strong>França Equinocial (1612-1615, Maranhão) – derrotados por Jerônimo de Albuquerque</strong></h3>
+				<p>A França Equinocial representou a segunda tentativa dos franceses de se fixarem no Brasil, na região maranhense entre os anos de 1612 a 1615. A origem do nome está relacionado com o território de conquista, posto que estava próximo da linha do Equador, que antes era denominada de linha Equinocial. Esse evento ocorreu após a França Antártica, colônia francesa que durou cerca de quinze anos no Rio de Janeiro. A partir disso, os franceses resolveram ocupar outra parte do território colonial português. Em março de 1612, uma expedição liderada por Daniel de La Touche (1570-1631) e se aliaram aos dos índios Tupinambás. As tribos indígenas e os franceses já estavam familiarizados uns com os outros, pois navegantes vindos da França já rondavam a região. O próprio La Touche esteve por ali duas vezes. Os indígenas, por sua vez, apelidaram os franceses de papagaios amarelos, pois estes eram loiros e tagarelas como as aves. Com isto, fundam uma segunda colônia francesa denominada “França Equinocial”, cuja capital era a cidade de São Luís em homenagem ao rei e ao santo patrono da França. Apesar de ser de religião calvinista, Daniel de La Touche trazia frades capuchinhos (franciscanos) na sua esquadra que rezaram a primeira missa pela fundação da cidade. Em três anos, o território francês se expandiu para os atuais estados do Pará, Amapá e Tocantins.</p>
+                <p><strong>A expulsão dos Franceses:</strong></p>
+				<p><strong>A Última Bandeira Francesa no Brasil: O Sangrento Cerco de São Luís (1615)</strong></p>
+				<p>O vento úmido do Atlântico soprava sobre as paliçadas do Forte de São Luís quando o primeiro canhão rugiu. Daniel de La Touche, com seu gibão de couro enegrecido pela pólvora, observava através da luneta enquanto as velas portuguesas surgiam no horizonte. Eram 19 de novembro de 1614, e a última colônia francesa no Brasil preparava-se para seu momento de glória... ou ruína.</p>
+                <p><strong>A Artilharia que Abalou o Equador</strong></p>
+                <p>Os portugueses trouxeram da Bahia seis colubrinas de bronze - monstros que lançavam pelouros de 24 libras a mais de um quilômetro de distância. O primeiro impacto contra as muralhas de taipa do forte fez tremer o solo como um terremoto. Os artilheiros franceses, veteranos das guerras religiosas da Europa, responderam com seus falconetes mais ágeis, mirando precisamente nos pontos onde a fumaça revelava o recarregamento da artilharia inimiga.</p>
+                <p><strong>A Noite dos Facões</strong></p>
+                <p>Enquanto os canhões trocavam fogo, 200 guerreiros Potiguaras, aliados dos portugueses, infiltraram-se pelos manguezais. Seus corpos pintados de urucum misturavam-se com o entardecer quando lançaram o ataque noturno. Facões de aço flamengo brilharam na luz das fogueiras quando abriram as gargantas dos sentinelas franceses. Os Tupinambás, aliados da França, contra-atacaram com zarabatanas que lançavam dardos envenenados - um tiro certeiro no pescoço de um capitão português fez sua carne apodrecer em três dias.</p>
+                <p><strong>O Milagre de Guaxenduba</strong></p>
+                <p>Ao amanhecer de 19 de novembro, La Touche ordenou o ataque decisivo. Seus 120 mosqueteiros, dispostos em três linhas alternadas, avançaram com disciplina mortal. A primeira salva francesa varreu a vanguarda portuguesa. Foi quando Jerônimo de Albuquerque revelou seu golpe de mestre: dois canhões leves escondidos atrás de duna, carregados com metralha. Quando dispararam a 50 passos, transformaram a linha francesa em carne e osso esfacelados. Os sobreviventes recuaram em desordem, pisoteando seus próprios mortos.</p>
+                <p><strong>O Último Banquete</strong></p>
+                <p>Dentro do forte sitiado, a situação tornara-se desesperadora. Os franceses comiam ratos e couro fervido. Um grupo de Tupinambás desertores foi capturado tentando fugir - La Touche ordenou que fossem enforcados nas muralhas como advertência. Quando a pólvora acabou, os defensores começaram a desmontar os canhões para usar os projéteis como munição de mosquete.</P>
+                <p><strong>A Rendição</strong></p>
+                <p>Em 4 de novembro de 1615, com apenas 37 franceses ainda em condições de lutar, a bandeira branca foi hasteada. Os termos foram duros: os sobreviventes marchariam desarmados entre duas fileiras de soldados portugueses e indígenas, entregando suas armas numa pilha que seria queimada. Quando as últimas naus francesas desapareceram no horizonte, os vencedores descobriram nos porões do forte os diários dos derrotados - páginas e páginas descrevendo um paraíso tropical que escapara para sempre de suas mãos. O cheiro de pólvora queimada ainda pairava sobre São Luís quando os primeiros tijolos da nova colônia portuguesa começaram a ser assentados... sobre as cinzas do sonho francês.</p>
+				
+				<div class="titulo-video"><h4>Video Aula sobre a França Equinocial</h4></div>
+				
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/-uqdLifiiO0" class = "content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+
+				
+                <h4>Holandeses:</h4>
+
+				<p><strong>A Ocupação Holandesa no Brasil</strong></p>
+				<p>No século XVII, enquanto Portugal estava sob domínio espanhol durante a União Ibérica (1580-1640), os holandeses viram-se impedidos de participar do lucrativo comércio do açúcar brasileiro. Como estavam em guerra contra a Espanha, decidiram tomar uma atitude drástica: invadir diretamente as principais regiões produtoras de açúcar no Brasil.</p>
+				<p><strong>As Invasões Holandesas</strong></p>
+				<p>A primeira tentativa ocorreu em 1624, quando uma frota holandesa conquistou Salvador, na Bahia. Porém, após um ano de ocupação, foram expulsos por uma força conjunta luso-espanhola. A segunda e mais importante invasão aconteceu em 1630, quando os holandeses tomaram Pernambuco, estabelecendo sua sede em Recife.</p>
+				<p><strong>O Governo de Maurício de Nassau</strong></p>
+				<p>O período mais próspero da ocupação ocorreu entre 1637 e 1644, sob o comando de João Maurício de Nassau. Ele transformou Recife em uma cidade moderna, com pontes, palácios e jardins botânicos. Nassau também trouxe artistas e cientistas holandeses para documentar a natureza e a vida no Brasil, resultando em obras de arte importantes. Além disso, manteve uma política de tolerância religiosa, permitindo a construção da primeira sinagoga das Américas.</p>
+				<p><strong>A Revolta Contra os Holandeses</strong></p>
+				<p>Após a saída de Nassau, a Companhia das Índias Ocidentais começou a cobrar dívidas dos senhores de engenho com juros altíssimos. Essa pressão financeira, somada à intolerância religiosa contra os católicos, levou à Insurreição Pernambucana em 1645. Liderados por André Vidal de Negreiros, João Fernandes Vieira, o indígena Filipe Camarão e o negro Henrique Dias, os luso-brasileiros iniciaram uma guerra de resistência.</p>
+				<p><strong>Principais batalhas da Insurreição Pernambucana</strong></p>
+				<ul>
+                   <li>Batalha do Monte das Tabocas: ocorrida em 19 de abril de 1645, foi a primeira batalha vencida pelos luso-brasileiros.</li>
+                   <li>Batalha de São Lourenço, ou Batalha de Tejucupapo: ocorrida em 24 de abril de 1646, ficou conhecida pelo fato de 600 holandeses terem sido derrotados pelas mulheres da vila de Tejucupapo, já que os homens do local teriam ido ao Recife para vender a produção agrícola.li>
+                   <li>Batalhas de Guararapes: duas batalhas, uma em 1648 e outra em 1649. Ambas perdidas pelos holandeses.</li>
+				   <li>Batalha de Campina Taborda: ocorrida em 26 de janeiro de 1654, foi a última travada entre os rivais.</li>
+               </ul>
+			   <p><strong>Batalhas de Guararapes (1648-1649)</strong></p>
+			   <p>Entre as listadas acima, as de maior destaque foram as duas Batalhas de Guararapes, ocorridas no Morro de mesmo nome, entre abril de 1648 e fevereiro de 1649. Em ambas os holandeses foram derrotados.</p>
+			   <p><strong>O Epico das Batalhas dos Guararapes</strong></p>
+			   <p>O rugido dos canhões ecoava pelos manguezais quando, naquele abril de 1648, as forças luso-brasileiras se preparavam para escrever uma das páginas mais gloriosas de nossa história. Nos Montes Guararapes, onde os ventos sopravam carregados do sal do Atlântico, 2.200 patriotas - uma mistura de portugueses endurecidos pelo sol tropical, indígenas conhecedores dos segredos da terra e africanos libertos - enfrentariam um exército holandês duas vezes maior.</p>
+			   <p>Na madrugada do dia 18, enquanto a névoa ainda envolvia os pântanos, os primeiros disparos romperam o silêncio. Os holandeses, com seus uniformes azuis e mosquetes reluzentes, avançavam confiantes. O que não sabiam era que cada atoleiro, cada grotão daquele terreno pantanoso havia se tornado uma armadilha mortal. Os brasileiros, liderados por veteranos das guerras coloniais, transformaram o próprio manguezal em aliado.</p>
+			   <p>Quando a poeira baixou no dia 19, o saldo era estarrecedor: 1.200 baixas holandesas contra apenas 84 do lado brasileiro. A vitória foi tão retumbante que ecoou através dos séculos - tanto que hoje o Exército Brasileiro considera aquela data como seu marco fundador.</p>
+			   <p>Mas a história ainda reservava outro capítulo. Em fevereiro de 1649, os holandeses voltaram, determinados a apagar a humilhação anterior. Desta vez, encontraram um inimigo ainda mais organizado. Na segunda Batalha dos Guararapes, a carnificina foi ainda maior: cerca de 2.000 soldados da WIC tombaram, enquanto os defensores perderam apenas 47 homens.</p>
+			   <img src="https://escolaeducacao.com.br/wp-content/uploads/2020/10/batalhas-guararapes-2-750x421.jpg" alt="" class="content-image-Batalha-dos-Guararapes">
+               <p class="subtitulo-image">Batalha dos Guararapes (1648-1649)</p>
+			   <p>O que torna essas batalhas verdadeiramente especiais não são apenas os números impressionantes, mas o simbolismo que carregam. Ali, no solo encharcado de sangue holandês, europeus, indígenas e africanos lutaram lado a lado como irmãos de armas. Essa união das "três raças", tão celebrada em nossa historiografia, talvez tenha sido a primeira manifestação concreta do que viria a se tornar o espírito brasileiro.</p>
+				
+				<div class="titulo-video"><h4>Video Aula sobre a Batalha dos Guararapes</h4></div>
+				
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/EP5GnomiyPA" 
+                class="content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+				
+			   <div class="info-box">
+			   <h4><strong>WIC (sigla em holandês para "West-Indische Compagnie")</strong></h4>
+			   <p>foi a Companhia Neerlandesa das Índias Ocidentais, uma poderosa empresa mercantil criada pelos holandeses em 1621 durante a Guerra dos Oitenta Anos contra a Espanha. Seu principal objetivo era dominar o comércio colonial nas Américas e na África, especialmente o lucrativo negócio do açúcar brasileiro, que antes era controlado por Portugal mas foi bloqueado pela Espanha durante a União Ibérica (1580-1640)</p>
+			   </div>
+				
+				<h3>Quilombo dos Palmares</h3>
+				<p>O Quilombo dos Palmares, formado por volta de 1580 na Serra da Barriga (atual Alagoas), foi o maior e mais duradouro refúgio de africanos escravizados e indígenas que fugiam da violência colonial. Surgido como um pequeno agrupamento, tornou-se um verdadeiro Estado livre, resistindo por quase um século aos ataques de holandeses e portugueses.</p>
+				<p>Com população estimada em 20 mil pessoas, Palmares era composto por vários mocambos (aldeias fortificadas), onde os habitantes viviam da agricultura (milho, mandioca, cana), caça, artesanato e comércio com vilas próximas. Liderados inicialmente por Ganga Zumba e depois por Zumbi, os quilombolas criaram uma sociedade complexa, com hierarquias próprias, mas menos opressiva que a escravidão colonial.</p>
+				<p>Palmares representava uma ameaça ao sistema escravista, inspirando fugas em massa. Após a expulsão dos holandeses (1654), os portugueses lançaram 18 expedições para destruí-lo. A resistência quilombola, usando táticas de guerrilha, só foi vencida em 1694, quando o bandeirante Domingos Jorge Velho, contratado pela Coroa, invadiu o quilombo. Zumbi, capturado e morto em 20 de novembro de 1695, tornou-se símbolo da luta pela liberdade.</p>
+				<p>A história de Palmares é celebrada no Dia da Consciência Negra (20/11). Hoje, a Serra da Barriga é um parque memorial, reconhecido como patrimônio cultural brasileiro, lembrando a coragem de quem ousou desafiar a escravidão. Palmares não foi apenas um refúgio, mas a prova de que a liberdade sempre foi possível.</p>
+				
+                <h3>Revoltas Coloniais</h3>
+				
+                <h4><strong>A Revolta dos Beckman (1684) – O Grito do Maranhão</strong></h4>
+				<p>A Revolta de Beckman foi um movimento ocorrido em São Luís, entre 1684 e 1685, liderado por homens-bons insatisfeitos com as medidas da Coroa portuguesa, especialmente em relação ao comércio local e ao tratamento dos indígenas. O estopim da revolta foi a insatisfação com a Companhia de Comércio do Maranhão, que detinha o monopólio comercial e não cumpria a promessa de fornecer escravos africanos, além de pagar pouco pelos produtos locais e vender mercadorias de má qualidade. Outro motivo foi a proibição da escravização indígena, que deixou os colonos sem mão de obra, já que os jesuítas controlavam os nativos em suas missões.</p>
+				<p>Liderados pelos irmãos Manuel e Tomás Beckman, os revoltosos tomaram o controle de São Luís em 24 de fevereiro de 1684, depuseram o capitão-mor, expulsaram os jesuítas e aboliram o monopólio comercial, estabelecendo uma junta de governo. No entanto, o movimento não se expandiu para outras regiões e, em maio de 1685, uma esquadra portuguesa retomou o controle da cidade. Os líderes foram punidos: Manuel Beckman e Jorge de Sampaio foram executados, outros foram presos, degredados ou multados.</p>
+				<p>Após a revolta, os jesuítas retornaram, a Companhia de Comércio foi extinta e a escravização indígena foi parcialmente liberada em 1688, com critérios estabelecidos pela Coroa. A escravidão indígena só foi totalmente proibida em 1755, pelo Marquês de Pombal. A Revolta de Beckman demonstrou o descontentamento dos colonos com as políticas portuguesas, mas não conseguiu mudanças duradouras sem o apoio de outras regiões.</p>
+				<div class="titulo-video"><h4>Video Aula da Revolta dos Beckman</h4></div>
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/JgHfuWS_5eQ" 
+                class="content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+				
+                <h4><strong>Guerra dos Emboabas (1707-1709) – Ouro e Traição nas Minas</strong></h4>
+				<p>A Guerra dos Emboabas (1708–1709) foi um conflito entre bandeirantes paulistas e forasteiros (chamados pejorativamente de "emboabas") pela exploração das minas de ouro na região de Minas Gerais. Os paulistas, que haviam descoberto as primeiras jazidas, queriam exclusividade na exploração, mas a chegada de portugueses e colonos de outras partes do Brasil gerou disputas.</p>
+				<p>O termo "emboaba", de origem tupi, referia-se aos estrangeiros que usavam botas e roupas fechadas, contrastando com os paulistas, que andavam descalços ou com sandálias. A tensão aumentou quando os emboabas, liderados por Manuel Nunes Viana, declararam-se contra o domínio paulista e nomearam seu próprio governador. Os paulistas, chefiados por Borba Gato, resistiram, mas foram derrotados na batalha do Capão da Traição, onde muitos foram massacrados após uma falsa promessa de rendição.</p>
+				<p>Com a vitória dos emboabas, os paulistas migraram para Goiás e Mato Grosso, onde descobriram novas minas. A Coroa portuguesa, preocupada com a desordem, interveio: separou as capitanias de São Paulo e Rio de Janeiro, criou a Capitania das Minas de Ouro e intensificou a cobrança de impostos, como o quinto real (20% do ouro extraído).</p>
+				<p>A guerra acelerou o povoamento do interior brasileiro e fortaleceu o controle metropolitano sobre a mineração, mas também gerou insatisfação, contribuindo para futuras revoltas como a Inconfidência Mineira. A exploração do ouro consolidou a economia colonial, mas a dependência de Portugal e a rigidez fiscal alimentaram o desejo de autonomia no Brasil.</p>
+				<div class="titulo-video"><h4>Video Aula da Guerra dos Emboabas</h4></div>
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/hEkaSPw3jTw" 
+                class="content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+				
+                <h4><strong>Guerra dos Mascates (1710-1711) – A Nobreza Contra o Progresso</strong></h4>
+				<p>A Guerra dos Mascates foi um conflito ocorrido entre 1710 e 1711 em Pernambuco, que opôs os senhores de engenho de Olinda aos comerciantes portugueses de Recife. O confronto surgiu num contexto de crise econômica, quando a produção açucareira, principal atividade da região, entrava em declínio após a expulsão dos holandeses em 1654. Os senhores de engenho, endividados, haviam contraído empréstimos com os comerciantes recifenses, a quem chamavam depreciativamente de "mascates" - termo que originalmente designava vendedores ambulantes.</p>
+				<p>A tensão aumentou quando Recife, então um importante centro comercial subordinado politicamente a Olinda, foi elevada à categoria de vila em 1710, conquistando autonomia administrativa. Isso desagradou profundamente a aristocracia olindense, que via sua hegemonia política ameaçada. Os senhores de engenho reagiram invadindo Recife e destituindo seu governo municipal. Inicialmente bem-sucedidos, os olindenses logo enfrentaram a resistência organizada dos comerciantes, que contavam com o apoio da Coroa portuguesa.</p>
+				<p>Em 1711, após intensos conflitos, os mascates saíram vitoriosos. Como resultado, Recife consolidou sua posição como principal centro político da capitania, substituindo Olinda como sede administrativa. Muitos senhores de engenho foram presos e tiveram suas propriedades confiscadas. A Coroa portuguesa, representada pelo novo governador Félix José de Mendonça, interveio para pacificar a região e garantir os interesses metropolitanos.</p>
+				<p>Este episódio marcou a ascensão do poder mercantil em detrimento da antiga aristocracia rural, refletindo as transformações econômicas e sociais que ocorriam na colônia. A vitória dos mascates simbolizou também o fortalecimento do controle metropolitano sobre Pernambuco, com a Coroa aproveitando as divisões internas para afirmar sua autoridade. A guerra deixou como legado uma profunda rivalidade entre as duas cidades, que perdura até os dias atuais em certos aspectos da vida política e cultural pernambucana.</p>
+				<div class="titulo-video"><h4>Video Aula da Guerra dos Mascates (1710-1711)</h4></div>
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/oRHlpbdnNEg" 
+                class="content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+				
+				<h4><strong>Revolta de Vila Rica (1720) – O Imposto que Incendiou as Minas</strong></h4>
+				<p>A Revolta de Vila Rica, ou Revolta de Filipe dos Santos, foi um movimento nativista que eclodiu em 1720 na região mineradora de Minas Gerais, então o coração econômico do Brasil colonial. O levante surgiu como resposta às medidas opressivas da Coroa Portuguesa, que intensificava seu controle sobre a produção de ouro através das Casas de Fundição - instituições que obrigavam os mineradores a fundir todo o ouro extraído e pagar rigorosamente o "quinto", imposto de 20% sobre a produção.</p>
+				<p>A insatisfação popular crescia não apenas com a pesada carga tributária, mas também com a proibição da circulação de ouro em pó, medida que visava coibir a sonegação fiscal. Liderados pelo tropeiro Filipe dos Santos, os revoltosos - compostos principalmente por pequenos mineradores, comerciantes e camadas médias da população - tomaram as ruas de Vila Rica exigindo o fim das Casas de Fundição, a redução de impostos e a extinção dos monopólios sobre produtos essenciais como sal, fumo e aguardente.</p>
+				<p>A reação da metrópole foi brutal. Após atrair os líderes para falsas negociações, o governador Conde de Assumar ordenou uma violenta repressão. Filipe dos Santos foi preso, condenado à forca e esquartejado, com seu corpo exposto como exemplo. As casas dos rebeldes foram incendiadas e as medidas controvertidas mantidas, com ainda maior rigor fiscal. Como consequência política, a capitania de Minas Gerais foi separada de São Paulo para facilitar o controle metropolitano.</p>
+				<p>Embora fracassada militarmente, a revolta deixou um legado importante: expôs as contradições do sistema colonial e plantou as sementes do descontentamento que décadas depois floresceria na Inconfidência Mineira. O movimento marcou a primeira grande resistência organizada contra a exploração metropolitana na região das minas, revelando a crescente consciência política das elites locais e o potencial revolucionário das camadas populares no Brasil colonial.</p>
+				<div class="titulo-video"><h4>Video Aula da Revolta de Vila Rica</h4></div>
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/Z2vdY3PZqks" 
+                class="content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+				
+				<h4><strong>Inconfidência Mineira e Tiradentes (1789) – A Conspiração que Abalou o Império</strong></h4>
+				<p>A Inconfidência Mineira, também conhecida como Conjuração Mineira, foi um movimento separatista organizado pela elite de Minas Gerais no final do século XVIII, durante o período colonial. Motivados pela excessiva cobrança de impostos pela Coroa Portuguesa - especialmente a derrama, que forçava o pagamento de taxas sobre o ouro mesmo com a queda na produção -, os conspiradores planejavam proclamar uma república inspirada no modelo dos Estados Unidos. Entre os participantes estavam intelectuais, clérigos, militares e fazendeiros, sendo Joaquim José da Silva Xavier, o Tiradentes, o mais ativo e entusiasta do grupo, apesar de sua condição social mais humilde em comparação aos demais.</p>
+				<p>O movimento foi traído por Joaquim Silvério dos Reis, que delatou os planos às autoridades em troca do perdão de suas dívidas. Antes que a revolta pudesse eclodir, os líderes foram presos e julgados em um processo que durou três anos. A maioria dos envolvidos recebeu penas brandas, como degredo ou prisão, mas Tiradentes, considerado o principal propagandista da conspiração, foi condenado à morte. Sua execução, em 21 de abril de 1792, foi encenada como um espetáculo de terror: enforcado e esquartejado, seu corpo foi exposto em locais públicos como advertência contra novas rebeliões.</p>
+				<p>Embora fracassada, a Inconfidência Mineira revelou o crescente descontentamento das elites coloniais com o domínio português e a influência de ideais iluministas e republicanos no Brasil. O movimento é considerado um precursor do processo de independência e deixou um legado simbólico importante, com Tiradentes sendo posteriormente transformado em mártir da liberdade e herói nacional. A conspiração também evidenciou as contradições da elite mineira, que, apesar de defender a liberdade política, mantinha posições ambíguas em relação à escravidão, mostrando os limites do pensamento revolucionário no contexto colonial brasileiro.</p>
+				<div class="titulo-video"><h4>Video Aula da Inconfidência Mineira e Tiradentes</h4></div>
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/5UukRDBWUS4" 
+                class="content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+				
+				<h4><strong>Conjuração Baiana (1798) – A Revolução dos Deixados Para Trás</strong></h4>
+				<p>A Conjuração Baiana, também chamada de Revolta dos Alfaiates, foi um movimento popular ocorrido em Salvador em 1798, marcado por forte conteúdo social e influenciado pelas ideias revolucionárias que circulavam no Atlântico naquele final de século XVIII. Diferentemente da Inconfidência Mineira, que reunira principalmente a elite local, esta revolta contou com ampla participação de setores populares - escravos libertos, artesãos, soldados rasos e pequenos comerciantes -, todos unidos pelo descontentamento com a opressão colonial e as péssimas condições de vida na Bahia.</p>
+				<p>O movimento surgiu num contexto de profunda crise econômica, agravada pela transferência da capital para o Rio de Janeiro em 1763, que deixou Salvador em decadência. A população sofria com altos impostos, falta de trabalho e a rigidez do sistema colonial, enquanto assistia aos ecos da Revolução Francesa e da independência do Haiti - exemplos que inflamavam os ânimos revolucionários. Na loja maçônica Cavaleiros da Luz, intelectuais e líderes populares discutiam ideais de liberdade, igualdade e abolição da escravidão, inspirados por Rousseau e Voltaire.</p>
+				<p>Os conjurados, entre eles os alfaiates Manuel Faustino e João de Deus, o soldado Lucas Dantas e o intelectual Cipriano Barata, espalhavam panfletos pela cidade convocando o povo à luta por uma república baiana independente, com fim da escravidão e igualdade racial. Porém, antes que o levante pudesse eclodir, as autoridades descobriram o plano através de delações. Em 1799, após julgamento, quatro líderes foram executados com extrema crueldade: enforcados e esquartejados, seus corpos expostos em locais públicos como lição aos que ousassem desafiar o poder colonial.</p>
+				<p>Embora fracassada, a Conjuração Baiana destacou-se por seu caráter popular e abolicionista, antecipando questões centrais que marcariam a história do Brasil no século XIX. O movimento revelou como as ideias revolucionárias do período haviam penetrado nas camadas mais humildes da colônia, criando um projeto de independência radicalmente diferente daquele que seria realizado pelas elites em 1822. Sua repressão violenta demonstrou o temor das autoridades coloniais diante de qualquer movimento que pudesse unir brancos pobres, negros libertos e escravos em torno de ideais de liberdade e igualdade social.</p>
+				<div class="titulo-video"><h4>Video Aula da Conjuração Baiana (1798)</h4></div>
+				<iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/4RjzyKwzna0" 
+                class="content-video"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+				
+				<h3>Epílogo: O Fogo que Não se Apaga</h3>
+				<p>De 1684 a 1798, o Brasil colonial foi um barril de pólvora. Cada revolta – seja dos nobres de Olinda, dos mineradores pobres ou dos escravizados sonhando com liberdade – foi uma faísca no caminho para a Independência. Esses homens e mulheres, com suas foices, suas penas e seus sonhos, escreveram a primeira página da história de um Brasil que ainda lutava para nascer. Seu legado? A certeza de que nenhum império dura para sempre quando um povo decide ser livre.</p>
+				
+                <h3>Personagens Importantes e suas Biografias</h3>
+				
+				<h4><strong>Martim Afonso de Sousa (fundador de São Vicente)</strong></h4>
+                <p class="image-caption">Martim Afonso de Sousa (1500–1571) foi um importante militar e administrador português que desempenhou um papel fundamental no início da colonização do Brasil. Nascido em Vila Viçosa, Portugal, em uma família nobre, recebeu uma educação esmerada, estudando navegação, matemática e cosmografia, sob a orientação do renomado cosmógrafo Pedro Nunes. Sua proximidade com a corte portuguesa, especialmente com o futuro rei D. João III, facilitou sua ascensão a cargos de grande responsabilidade.</p>
+                <p class="image-caption">Em 1530, Martim Afonso foi encarregado pelo rei D. João III de comandar a primeira expedição colonizadora ao Brasil, com o objetivo de consolidar o domínio português e combater o contrabando de pau-brasil realizado por franceses. Partindo de Lisboa com uma frota de quatro embarcações e cerca de 400 pessoas, sua missão incluía estabelecer marcos de posse, fundar povoações e organizar a administração colonial.</p>
+                <p class="image-caption">Ao chegar ao Brasil, enfrentou os franceses na costa pernambucana, confiscando um navio carregado de pau-brasil. Em 1532, fundou a Vila de São Vicente, a primeira povoação permanente do Brasil, e mais tarde estabeleceu o povoado de Piratininga, que daria origem à cidade de São Paulo. Distribuiu sesmarias, incentivou a agricultura e iniciou o cultivo da cana-de-açúcar, buscando viabilizar economicamente a colônia.</p>
+                <p class="image-caption">Em 1534, com a implantação do sistema de capitanias hereditárias, Martim Afonso recebeu a Capitania de São Vicente, uma das poucas que prosperou, ao lado de Pernambuco. No entanto, ele nunca retornou ao Brasil, deixando a administração a cargo de representantes enquanto seguia para a Índia, onde atuou como governador-geral do Mar da Índia, combatendo piratas e fortalecendo o poder português no Oriente.</p>
+                <p class="image-caption">Nos seus últimos anos, queixou-se do pouco reconhecimento pela sua longa serviço à Coroa, mas recebeu terras em Portugal como recompensa. Faleceu em Lisboa, em 1571, e foi sepultado no Convento de São Francisco.</p>
+                <p class="image-caption">Seu legado foi decisivo para a consolidação do Brasil como colônia portuguesa, estabelecendo as bases administrativas e econômicas que permitiram o desenvolvimento do projeto colonial. Sua expedição marcou o início de uma ocupação mais organizada do território, distanciando-se das meras explorações iniciais e dando início a um processo efetivo de colonização.</p>
+				<img src="https://www.researchgate.net/publication/337806323/figure/fig5/AS:833286444167179@1575682378522/Figura-13-Jose-Wasth-Rodrigues-Retrato-de-Martim-Afonso-de-Souza-1932-oleo-sobre.jpg" alt="" class="content-image-personagens">
+                <p class="subtitulo-image">Martim Afonso de Sousa (fundador de São Vicente)</p>
+				
+				<h4><strong>Mem de Sá (governador que expulsou os franceses)</strong></h4>
+				<p class="image-caption">Mem de Sá (1498-1572) foi um administrador português e o terceiro governador-geral do Brasil, cujo governo (1558-1572) marcou a consolidação do domínio português na colônia. Nascido em Coimbra, formou-se em leis e exerceu cargos jurídicos em Portugal antes de ser nomeado para o cargo no Brasil.</p>
+				<p class="image-caption">Chegou à Bahia em 1557 e assumiu o governo no ano seguinte, enfrentando desafios como conflitos entre colonos e jesuítas, resistência indígena e a presença de franceses no litoral. Com o apoio dos padres Manuel da Nóbrega e José de Anchieta, promoveu a pacificação de tribos hostis e incentivou a catequese em missões que chegaram a abrigar milhares de indígenas.</p>
+				<p class="image-caption">Um de seus feitos mais importantes foi a expulsão dos franceses da Baía de Guanabara, onde estavam estabelecidos desde 1555 sob o comando de Villegagnon. Após uma primeira tentativa em 1560, que destruiu o Forte Coligny, os franceses resistiram com o apoio dos tamoios. Somente em 1565, com uma nova expedição liderada por seu sobrinho Estácio de Sá, os portugueses fundaram a cidade do Rio de Janeiro (São Sebastião do Rio de Janeiro) e, após intensos combates, expulsaram definitivamente os invasores em 1567.</p>
+				<p class="image-caption">Mem de Sá também impulsionou a economia colonial ao regulamentar a importação de escravos africanos (Carta Régia de 1559), fortalecendo a produção açucareira. No final de seu governo, debilitado pela idade, pediu repetidamente para ser substituído, mas faleceu em Salvador (1572) antes da chegada de seu sucessor.</p>
+				<p class="image-caption">Seu legado inclui a fundação do Rio de Janeiro, a consolidação do poder português contra ameaças estrangeiras e a organização administrativa que permitiu o crescimento da colônia. Após sua morte, o Brasil foi temporariamente dividido em dois governos (Norte e Sul), refletindo a expansão territorial e a complexidade da administração colonial.</p>
+                <img src="https://www.projetoagathaedu.com.br/imagens/blog/materias/historia-do-brasil/governo-geral/mem-de-sa.jpg" alt="" class="content-image-personagens">
+                <p class="subtitulo-image">Mem de Sá (governador que expulsou os franceses)</p>
+				
+				<h4><strong>Zumbi dos Palmares (líder do Quilombo dos Palmares)</strong></h4>
+				<p class="image-caption">Zumbi dos Palmares (1655-1695) foi o último e mais emblemático líder do Quilombo dos Palmares, maior símbolo de resistência negra contra a escravidão no Brasil colonial. Nascido no próprio quilombo – localizado na Serra da Barriga (atual Alagoas) –, era neto da princesa Aqualtune e sobrinho de Ganga Zumba, antigos líderes da comunidade. Criado entre histórias de luta contra a escravidão, Zumbi se tornou um guerreiro destemido e estrategista.</p>
+				<p class="image-caption">O quilombo, formado por escravizados fugitivos desde o início do século XVII, transformou-se em um Estado livre com milhares de habitantes, organizado em mocambos (aldeias fortificadas). Sob o comando de Zumbi, Palmares não apenas resistiu a dezenas de expedições militares, mas também desafiou o sistema escravocrata, recusando acordos que mantinham outros negros sob jugo colonial. Em 1678, Ganga Zumba (então líder) aceitou um tratado de paz com as autoridades portuguesas, mas Zumbi rejeitou a proposta, pois não aceitava a liberdade apenas para alguns enquanto a escravidão persistia. Assumiu a liderança e continuou a luta.</p>
+				<p class="image-caption">Após anos de resistência, em 1694, o bandeirante Domingos Jorge Velho, contratado pela Coroa, liderou um grande ataque com artilharia pesada, destruindo o quilombo. Zumbi fugiu, mas foi traído e capturado em 20 de novembro de 1695. Sua cabeça foi cortada e exposta no Recife para desencorajar novas revoltas.</p>
+				<p class="image-caption">Zumbi se tornou um ícone da luta pela liberdade e igualdade racial. Em sua homenagem, o 20 de novembro foi instituído como o Dia da Consciência Negra, data que celebra a resistência negra e combate o racismo. Sua história inspira movimentos sociais até hoje, simbolizando a coragem e a luta por justiça. Palmares não foi apenas um refúgio, mas um projeto de liberdade – e Zumbi, seu maior herói.</p>
+                <img src="https://th.bing.com/th/id/OIP.Vv7f-fF_YedBAdaYj4yKSwHaFM?r=0&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3" alt="" class="content-image-personagens">
+                <p class="subtitulo-image">Zumbi dos Palmares (líder do Quilombo dos Palmares)</p>
+                
+				<h4><strong>Aleijadinho (artista barroco do ciclo do ouro))</strong></h4>
+				<p class="image-caption">Aleijadinho (1738-1814), nascido Antônio Francisco Lisboa, foi o mais importante escultor, entalhador e arquiteto do período colonial brasileiro, cuja obra representa o ápice do Barroco mineiro. Filho de um arquiteto português com uma escrava africana, Aleijadinho cresceu em Vila Rica (atual Ouro Preto), então epicentro da riqueza aurífera, onde absorveu influências artísticas que moldariam seu estilo único.</p>
+				<p class="image-caption">Por volta de 1777, o artista foi acometido por uma doença degenerativa - possivelmente lepra ou sífilis - que lhe deformou progressivamente as mãos e os pés, obrigando-o a trabalhar com ferramentas amarradas aos membros. Essa condição, que lhe rendeu o apelido de "Aleijadinho", não impediu que criasse algumas das mais impressionantes obras de arte sacra do Brasil colonial.</p>
+				<p class="image-caption">Sua produção artística se espalha por diversas cidades históricas de Minas Gerais, com destaque para o conjunto do Santuário do Bom Jesus de Matosinhos em Congonhas, onde esculpiu os famosos Doze Profetas em pedra-sabão (1800-1805) e as sessenta e seis figuras em madeira que compõem as cenas da Paixão de Cristo nas Capelas dos Passos. Em Ouro Preto, projetou a igreja de São Francisco de Assis, considerada obra-prima do Barroco brasileiro, com sua fachada em pedra-sabão e interior ricamente adornado.</p>
+				<p class="image-caption">Apesar do reconhecimento artístico, Aleijadinho viveu seus últimos anos em condições precárias, falecendo em 18 de novembro de 1814. Seu legado, no entanto, sobrevive não apenas nas igrejas e museus de Minas Gerais, mas como símbolo da criatividade e resiliência humana. Sua obra sintetiza a fusão cultural do período colonial, combinando influências europeias com elementos locais, e permanece como testemunho do florescimento artístico durante o ciclo do ouro no Brasil. Hoje, suas criações atraem estudiosos e turistas de todo o mundo, consagrando-o como figura central da história da arte nas Américas.</p>
+                <img src="https://th.bing.com/th/id/OIP.mFpuVlX6hLtqPCIe9LA3DQHaHa?r=0&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3" alt="" class="content-image-personagens">
+                <p class="subtitulo-image">Aleijadinho (artista barroco do ciclo do ouro)</p>
+
+                <h4><strong>Marquês de Pombal (reformador do século XVIII)</strong></h4>
+                <p class="image-caption">Sebastião José de Carvalho e Melo, o Marquês de Pombal (1699-1782), foi uma das figuras mais marcantes da história portuguesa do século XVIII, deixando um legado de reformas profundas que transformaram Portugal e seu império colonial. Nascido em Lisboa em uma família da pequena nobreza, formou-se em Direito em Coimbra antes de iniciar uma brilhante carreira diplomática como embaixador em Londres e Viena, onde adquiriu experiência política e conhecimento das ideias iluministas que mais tarde aplicaria em Portugal.</p>
+				<p class="image-caption">Sua ascensão ao poder ocorreu em 1750, quando o rei D. José I o nomeou Secretário de Estado dos Negócios Estrangeiros, cargo que rapidamente se transformou em uma posição de liderança absoluta no governo português. Pombal implementou um ambicioso programa de reformas modernizadoras, centralizando o poder real e promovendo o desenvolvimento econômico através da criação de companhias monopolistas como a do Grão-Pará e Maranhão, que visavam fortalecer o comércio colonial.</p>
+				<p class="image-caption">O momento decisivo de seu governo foi o catastrófico terremoto de Lisboa em 1755, que destruiu grande parte da capital. Com mão de ferro e eficiência burocrática, Pombal coordenou a reconstrução da cidade, implementando inovações urbanísticas que deram origem à Lisboa moderna, com suas ruas largas e edifícios anti-sísmicos na Baixa Pombalina. Sua atuação nessa crise consolidou seu poder, permitindo-lhe implementar reformas ainda mais profundas.</p>
+				<p class="image-caption">No Brasil, suas políticas foram igualmente transformadoras: transferiu a capital de Salvador para o Rio de Janeiro em 1763, expulsou os jesuítas em 1759 - confiscando seus vastos bens e assumindo o controle sobre a educação - e reorganizou a administração colonial. Seu governo autoritário atingiu o ápice com a brutal repressão à família Távora após uma suposta tentativa de assassinato do rei em 1758, quando nobres foram torturados e executados publicamente.</p>
+				<p class="image-caption">Com a morte de D. José I em 1777, Pombal caiu em desgraça perante a nova rainha D. Maria I, sendo afastado do poder e passando seus últimos anos no ostracismo. Sua complexa herança combina o avanço econômico e administrativo com métodos despóticos, fazendo dele uma figura controversa - ao mesmo tempo déspota esclarecido e visionário reformador cujas marcas ainda são visíveis na Lisboa moderna e nas estruturas do Estado português.</p>
+                <img src="https://static.preparaenem.com/2021/10/1-marques-de-pombal.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Marquês de Pombal (reformador do século XVIII)</p>
+				
+				<h4><strong>Pedro Álvares Cabral (navegador e explorador português)</strong></h4>
+				<p class="image-caption">Pedro Álvares Cabral (1467-1520) foi um navegador e explorador português, conhecido por comandar a frota que chegou ao Brasil em 22 de abril de 1500. Nascido em Belmonte, Portugal, em uma família nobre, estudou literatura, história e cosmografia em Lisboa. Durante o reinado de D. João II, aperfeiçoou-se em técnicas militares e navegação, em um período marcado pelas grandes expedições portuguesas, como as de Bartolomeu Dias e Vasco da Gama.</p>
+				<p class="image-caption">Em 1494, o Tratado de Tordesilhas estabeleceu a divisão das terras descobertas entre Portugal e Espanha, garantindo a Portugal direitos sobre vastas áreas do futuro Brasil. Nomeado capitão-mor por D. Manuel I, Cabral partiu em 1500 com uma frota de treze embarcações, incluindo navegadores experientes como Bartolomeu Dias. Após avistar terras brasileiras em 22 de abril, desembarcou em Porto Seguro, onde ocorreu a primeira missa e foram estabelecidos contatos com os indígenas. A notícia da descoberta foi enviada ao rei através da famosa carta de Pero Vaz de Caminha.</p>
+				<p class="image-caption">Seguindo para a Índia, Cabral enfrentou tempestades que destruíram parte da frota, incluindo a embarcação de Bartolomeu Dias. Em Calicute, enfrentou conflitos com muçulmanos, mas conseguiu estabelecer uma feitoria antes de retornar a Lisboa em 1501 com apenas seis navios. Após seu retorno, casou-se e teve seis filhos, mas foi afastado de novas expedições devido a desentendimentos com a corte. Retirou-se para suas propriedades e faleceu em Santarém em 1520, sendo sepultado na Igreja da Graça. Sua viagem consolidou a presença portuguesa no Brasil e no comércio com o Oriente.</p>
+                <img src="https://mega.ibxk.com.br/2018/04/16/16163647226054.jpg?w=600" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Pedro Álvares Cabral (navegador e explorador português)</p>
+				
+				<h4><strong>Pero Vaz de Caminha (escrivão português)</strong></h4>
+				<p class="image-caption">Pero Vaz de Caminha (1450–1500) foi um escrivão português, conhecido por ter escrito a célebre carta que relatou ao rei D. Manuel I a chegada da esquadra de Pedro Álvares Cabral ao Brasil em 1500. Nascido no Porto, filho de Vasco Fernandes de Caminha, cavaleiro do Duque de Bragança, ocupou cargos públicos, como mestre da balança da Casa da Moeda. Em 1500, foi nomeado escrivão da frota de Cabral, que partiu de Lisboa com treze navios rumo à Índia, mas acabou desviando-se para o litoral brasileiro.</p>
+				<p class="image-caption">Caminha registrou detalhes da viagem e do encontro com os indígenas em sua carta, descrevendo a paisagem, os habitantes e os primeiros contatos. Relatou a nudez dos nativos, seus adornos corporais e a troca de presentes, além de destacar a fertilidade da terra, embora sem menção a metais preciosos. A carta, escrita em 1º de maio de 1500 em Porto Seguro, foi enviada a Portugal com Gaspar de Lemos e só foi descoberta em 1773 no Arquivo da Torre do Tombo.</p>
+				<p class="image-caption">Após a partida do Brasil, a esquadra seguiu para a Índia, enfrentando tempestades que destruíram quatro navios, incluindo o de Bartolomeu Dias. Em Calicute, os portugueses enfrentaram conflitos com os muçulmanos, resultando em mortes e represálias. Caminha faleceu durante um ataque mouro em 15 de dezembro de 1500, antes de retornar a Portugal. Sua carta, publicada posteriormente, tornou-se o primeiro documento histórico do Brasil, essencial para entender o início da colonização portuguesa.</p>
+				<img src="https://tse4.mm.bing.net/th/id/OIP.5t5ehGs1dk6UurDiQ_56fgHaKA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Pero Vaz de Caminha (escrivão português)</p>
+				
+				<h4><strong>Tomé de Souza (militar e administrador português)</strong></h4>
+				<p class="image-caption">Tomé de Sousa (1503–1579) foi um militar e administrador português, destacando-se como o primeiro governador-geral do Brasil, cargo que exerceu entre 1549 e 1553. Nascido em Rates, Portugal, filho de uma família nobre, iniciou sua carreira como soldado, distinguindo-se nas lutas contra os mouros em Marrocos e em missões na Índia. Sua bravura e habilidades administrativas lhe renderam o título de fidalgo da Casa Real em 1537.</p>				
+				<p class="image-caption">Em 1548, o rei D. João III, buscando fortalecer a colonização do Brasil, criou o Governo-Geral e nomeou Tomé de Sousa para o cargo, entregando-lhe um regimento que definia suas atribuições administrativas, judiciais e militares. Em fevereiro de 1549, partiu de Lisboa com uma frota de seis navios, trazendo mais de mil pessoas, incluindo degredados, colonos, funcionários reais e os primeiros jesuítas, chefiados por Manuel da Nóbrega.</p>
+				<p class="image-caption">No dia 29 de março de 1549, desembarcou na Bahia de Todos os Santos, onde fundou a cidade de Salvador, primeira capital do Brasil. Com a ajuda do luso-indígena Diogo Álvares, o Caramuru, organizou a construção da cidade seguindo um planejamento pré-estabelecido. Durante seu governo, promoveu a defesa das capitanias contra ataques indígenas e piratas, incentivou a agricultura (especialmente a cana-de-açúcar) e a pecuária, e autorizou expedições ao sertão em busca de ouro, embora sem grandes resultados.</p>
+				<p class="image-caption">Em 1553, após inspecionar as capitanias, entregou o governo a Duarte da Costa e retornou a Portugal, onde reassumiu funções na corte, tornando-se "vedor d'el-rei" durante os reinados de D. João III e D. Sebastião. Faleceu em Lisboa em 1579, sendo sepultado no Mosteiro de Santo Antônio de Castanheira. Seu governo marcou a consolidação da colonização portuguesa no Brasil, estabelecendo as bases administrativas e urbanas que permitiram o desenvolvimento da colônia.</p>
+				<img src="https://th.bing.com/th/id/R.30755e1ff76a811b75a2119febe2e137?rik=D0zoq4RVWyEhCw&riu=http%3a%2f%2flh6.ggpht.com%2f_5ZVfrqNx7ZM%2fSfkVpLIk28I%2fAAAAAAAACzw%2fzcR2BeQr_NE%2fTome-de-Sousa.jpg&ehk=C04SZoOQgOKzo6PUejfS2ztMYVYwUIDmPV4VTb10JE4%3d&risl=&pid=ImgRaw&r=0" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Tomé de Souza (militar e administrador português)</p>
+				
+				<h4><strong>Duarte Coelho ( donatário da Capitania de Pernambuco)</strong></h4>
+				<p class="image-caption">Duarte Coelho (c. 1485–1554) foi um militar, navegador e administrador colonial português, destacando-se como o primeiro donatário da Capitania de Pernambuco e um dos principais responsáveis pelo início da colonização efetiva do Brasil. Nascido no Porto, filho do escrivão da Fazenda Real Gonçalo Coelho, serviu como embaixador no Sião (Tailândia) e comandou expedições na Ásia e África antes de se envolver na defesa do litoral brasileiro contra invasões francesas. Em 1534, recebeu do rei D. João III a Capitania de Pernambuco, uma das mais extensas e promissoras do Brasil, abrangendo desde o sul da Bahia até o Rio São Francisco.</p>				
+				<p class="image-caption">Chegando a Pernambuco em 1535 com sua esposa, Brites de Albuquerque, e seu cunhado Jerônimo de Albuquerque, Duarte Coelho enfrentou resistência dos índios Caetés, mas estabeleceu alianças com os Tabajaras através do casamento de Jerônimo com a indígena Muirá-Ubi. Fundou as primeiras vilas da capitania, incluindo Igarassu (originalmente Vila de Santos Cosme e Damião) em 1535 e Olinda em 1537, esta última escolhida por sua posição estratégica e beleza natural, tornando-se a sede administrativa.</p>
+				<p class="image-caption">Sua administração focou no desenvolvimento econômico, especialmente na implantação de engenhos de açúcar, como o Engenho do Capitão e o Engenho Nossa Senhora da Ajuda, que transformaram Pernambuco na capitania mais próspera do Brasil. Para suprir a falta de mão de obra, obteve permissão para trazer escravos africanos, consolidando o modelo agroexportador baseado no açúcar. Sua habilidade política garantiu autonomia perante o Governo-Geral estabelecido em 1549, mantendo Pernambuco fora da jurisdição direta de Tomé de Sousa.</p>
+				<p class="image-caption">Em 1553, retornou a Portugal para cuidar da educação de seus filhos, deixando a administração a cargo de sua esposa e de Jerônimo de Albuquerque. Faleceu em 1554, legando uma capitania rica e organizada a seu filho Duarte Coelho de Albuquerque. Seu trabalho estabeleceu as bases do poder econômico e político de Pernambuco durante séculos, tornando-o um dos principais centros da colonização portuguesa no Brasil.</p>
+				<img src="https://tse2.mm.bing.net/th/id/OIP.tx_94KiVzdnZy-JnAhOLAgHaEa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Duarte Coelho ( donatário da Capitania de Pernambuco)</p>
+				
+				<h4><strong>Padre Antônio Vieira (escritor e orador português)</strong></h4>
+				<p class="image-caption">Padre Antônio Vieira (1608-1697) foi um dos mais importantes religiosos, escritores e oradores do período barroco em língua portuguesa. Nascido em Lisboa, mudou-se para o Brasil ainda criança, onde estudou no Colégio dos Jesuítas em Salvador e ingressou na Companhia de Jesus aos 15 anos. Ordenado padre em 1634, destacou-se como pregador eloquente, defendendo a expulsão dos holandeses do Nordeste brasileiro e a revitalização do catolicismo.</p>				
+				<p class="image-caption">Em 1641, retornou a Portugal, onde se tornou conselheiro do rei D. João IV e um influente diplomata, atuando em negociações na França, Holanda e Roma. Defendeu os direitos dos judeus e cristãos-novos, contribuindo para a criação da Companhia Geral do Comércio do Brasil (1649). De volta ao Brasil, dedicou-se à catequese no Maranhão e Pará, lutando contra a escravização indígena, o que lhe rendeu a hostilidade dos colonos e sua expulsão em 1661.</p>
+				<p class="image-caption">Perseguido pela Inquisição por suas ideias progressistas, foi preso entre 1666 e 1667, mas absolvido pelo Papa em 1675. Sua obra, composta por mais de 200 sermões e 700 cartas, é considerada a expressão máxima do Barroco em prosa, combinando retórica refinada, argumentação política e fervor religioso. Entre seus sermões mais famosos estão o Sermão da Sexagenária, o Sermão de Santo Antônio (contra a escravidão indígena) e o Sermão pelo Bom Sucesso das Armas de Portugal.</p>
+				<p class="image-caption">Retirou-se para Salvador em 1681, onde organizou seus escritos até morrer, quase cego, em 1697. Sua eloquência, defesa dos oprimidos e visão crítica do colonialismo fizeram dele uma figura ímpar na literatura e na história luso-brasileira. Frases como "O livro é um mudo que fala, um surdo que responde" sintetizam seu estilo e pensamento, marcados pela esperança e pelo humanismo.</p>
+				<img src="https://cdn.pensador.com/img/authors/pa/dr/padre-antonio-vieira-l.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Padre Antônio Vieira (escritor e orador português)</p>
+				
+				<h4><strong>Filipe Camarão (guerreiro indígena que se destacou na luta contra os europeus)</strong></h4>
+				<p class="image-caption">Filipe Camarão (1591–1649), nascido como índio Poti na atual região de Natal, foi um guerreiro indígena brasileiro que se destacou na luta contra os invasores europeus, especialmente durante a Insurreição Pernambucana. Batizado como Antônio Filipe Camarão, foi educado por jesuítas, sabia ler e escrever e se casou com Clara Camarão, que também participou das batalhas.</p>				
+				<p class="image-caption">Lutou contra os franceses no Maranhão em 1614 e contra os holandeses em várias frentes, como na Bahia (1624) e em Pernambuco (1630), sempre ao lado de outros líderes como André Vidal de Negreiros. Organizou ataques com seus guerreiros indígenas, aplicando táticas de guerrilha, e teve papel decisivo em diversas vitórias militares. Por sua bravura, recebeu títulos como “Capitão-Mor dos Índios”, “Dom” e “Cavaleiro da Ordem de Cristo”.</p>
+				<p class="image-caption">Durante a ocupação holandesa no Nordeste, resistiu ativamente, mesmo quando a maioria das capitanias foi dominada. Participou da Insurreição Pernambucana e da primeira Batalha dos Guararapes em 1648, mas adoeceu e faleceu no ano seguinte. Em sua memória, a Prefeitura de Natal foi nomeada em sua homenagem em 1955.</p>
+				<img src="https://images.squarespace-cdn.com/content/v1/5c128cccc3c16aaf8b036702/1564920632653-FXCTZJEOWQ2G55PANRWV/An%C3%B4nimo_-_Retrato_de_Filipe_Camar%C3%A3o.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Filipe Camarão (guerreiro indígena que se destacou na luta contra os europeus)</p>
+				
+				<h4><strong>Maurício de Nassau (militar alemão que governou o Brasil holandês)</strong></h4>
+				<p class="image-caption">Maurício de Nassau (1604–1679) foi um nobre e militar alemão que governou o Brasil holandês entre 1637 e 1644, a serviço da Companhia das Índias Ocidentais. Chegou ao Recife com intelectuais, artistas e soldados, e teve papel importante na organização política, militar e cultural da colônia. Conquistou novos territórios, fortaleceu o tráfico de escravos africanos e promoveu o desenvolvimento urbano do Recife, transformando-o na moderna Cidade Maurícia, com canais, palácios, observatório astronômico e a primeira ponte do Brasil.</p>				
+				<p class="image-caption">Apesar de suas inovações, Nassau enfrentou pressões da Companhia por gastos excessivos e dificuldades na cobrança de dívidas. Pediu demissão em 1643 e retornou à Europa no ano seguinte. Após sua saída, a relação entre os holandeses e os senhores de engenho se deteriorou, levando à Insurreição Pernambucana, que culminou na expulsão definitiva dos holandeses em 1654. Nassau morreu em 1679, deixando um legado cultural e urbanístico marcante no Brasil colonial.</p>
+				<img src="https://blogs.diariodepernambuco.com.br/historiape/wp-content/uploads/2016/04/mauricio.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Maurício de Nassau (militar alemão que governou o Brasil holandês)</p>
+				
+				<h4><strong>Tiradentes (líder da Inconfidência Mineira)</strong></h4>
+				<p class="image-caption">Tiradentes, nascido Joaquim José da Silva Xavier em 1746, em Minas Gerais, foi o principal líder da Inconfidência Mineira, movimento que tentou libertar o Brasil do domínio português. Órfão desde cedo, foi criado pelo padrinho e aprendeu ofícios como odontologia, farmácia e comércio. Ganhou o apelido de Tiradentes por atuar como dentista. Viveu numa época em que a mineração decaía e os impostos abusivos geravam insatisfação geral.</p>				
+				<p class="image-caption">Ingressou na cavalaria e, mais tarde, envolveu-se com ideias iluministas e revolucionárias. Junto a outros intelectuais e militares, planejou a independência da colônia e uma república com capital em São João del-Rei. O grupo chegou a criar uma bandeira com o lema "Liberdade ainda que tardia". O movimento foi traído por Silvério dos Reis em troca do perdão de suas dívidas, e Tiradentes foi preso no Rio de Janeiro em 1789.</p>
+				<p class="image-caption">Após longo processo, ele assumiu sozinho a culpa e foi o único condenado à morte. Em 21 de abril de 1792, foi enforcado e esquartejado como exemplo para os demais. Décadas depois, passou a ser visto como mártir da independência, sendo proclamado patrono cívico do Brasil, com feriado nacional no dia de sua morte.</p>
+				<img src="https://s.ebiografia.com/assets/img/authors/ti/ra/tiradentes-l.jpg?auto_optimize=low&width=255" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Tiradentes (líder da Inconfidência Mineira)</p>
+				
+				<h4><strong>Dom João VI (Rei de Portugal entre 1816 e 1826.)</strong></h4>
+				<p class="image-caption">Dom João VI nasceu em 1767 em Lisboa e tornou-se Príncipe Regente em 1799 após a doença mental de sua mãe, a rainha D. Maria I. Em 1807, com a invasão napoleônica, transferiu a corte portuguesa para o Brasil. Estabelecido no Rio de Janeiro, abriu os portos às nações amigas (1808), acabando com o monopólio comercial português, o que impulsionou a economia.</p>				
+				<p class="image-caption">Durante sua permanência, fundou instituições importantes como a Imprensa Régia, o Banco do Brasil, a Biblioteca Real, o Jardim Botânico e a Academia de Belas Artes, modernizando o país. Em 1815, elevou o Brasil à condição de Reino Unido a Portugal e Algarves, aumentando o prestígio brasileiro.</p>
+				<p class="image-caption">O Rio de Janeiro se transformou no centro político do império português, com obras públicas e crescimento urbano. A permanência da corte também fortaleceu o sentimento de autonomia. Em 1821, Dom João retornou a Portugal, deixando seu filho Dom Pedro como regente, que proclamaria a independência em 1822.</p>
+				<p class="image-caption">Dom João VI morreu em 1826, mas seu legado foi essencial para o fim do colonialismo: o Brasil saiu do isolamento, ganhou infraestrutura e base administrativa, e estava pronto para tornar-se um país independente e unificado.</p>
+				<img src="https://i.pinimg.com/736x/fc/5b/42/fc5b4228b6a0a2f0e640753122178a23.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Dom João VI (Rei de Portugal entre 1816 e 1826.)</p>
+				
+				<h4><strong>Dom Pedro I(Primeiro Imperador do Brasil)</strong></h4>
+				<p class="image-caption">Dom Pedro I (1798–1834) foi o primeiro imperador do Brasil, responsável pela proclamação da independência em 1822 e pela outorga da primeira Constituição brasileira em 1824. Nascido em Portugal, filho de D. João VI e Carlota Joaquina, mudou-se para o Brasil em 1808 com a família real, fugindo da invasão napoleônica. Criado no Rio de Janeiro, recebeu educação esmerada e desenvolveu interesse por política, música e equitação.</p>				
+				<p class="image-caption">Em 1817, casou-se com a arquiduquesa austríaca Maria Leopoldina, com quem teve sete filhos, incluindo o futuro D. Pedro II. Com a Revolução Liberal do Porto (1820), D. João VI retornou a Portugal, deixando-o como príncipe regente do Brasil. Pressões portuguesas para seu retorno levaram ao famoso "Dia do Fico" (9 de janeiro de 1822), quando declarou sua permanência. A ruptura definitiva veio em 7 de setembro de 1822, com o Grito do Ipiranga, proclamando a independência.</p>
+				<p class="image-caption">Coroado imperador em outubro de 1822, enfrentou resistência em províncias como Bahia e Cisplatina (atual Uruguai), consolidando a unidade nacional. Sua Constituição de 1824 estabeleceu um governo centralizado, com poderes moderadores. Contudo, seu reinado foi marcado por crises políticas, conflitos com a Assembleia Constituinte e escândalos pessoais, como seu relacionamento público com a Marquesa de Santos (Domitila de Castro).</p>
+				<p class="image-caption">Após a morte de D. João VI (1826), tornou-se brevemente rei de Portugal (D. Pedro IV), mas abdicou em favor de sua filha Maria da Glória (futura D. Maria II). Seu irmão D. Miguel usurpou o trono, levando D. Pedro a uma guerra civil em Portugal (1832–1834). Enquanto isso, no Brasil, seu governo autoritário e crises econômicas levaram à abdicação em 1831, em favor de seu filho Pedro de Alcântara (D. Pedro II).</p>
+				<p class="image-caption">Retornou a Portugal, onde liderou a luta liberal contra D. Miguel, restaurando sua filha no trono. Morreu de tuberculose em 1834, aos 35 anos. Seus restos foram inicialmente sepultados em Lisboa, mas em 1972 foram transferidos para o Monumento do Ipiranga, em São Paulo.</p>
+				<p class="image-caption">Dom Pedro I deixou um legado ambíguo: herói da independência para alguns, monarca autoritário para outros. Sua vida foi marcada por paixões intensas, contradições políticas e um papel decisivo na formação do Brasil e de Portugal no século XIX.</p>
+				<img src="https://th.bing.com/th/id/R.6d6cc4b2f87089fa2c549be09717f32a?rik=oylW%2beQSlwTKiw&riu=http%3a%2f%2fwww.infoescola.com%2fwp-content%2fuploads%2f2007%2f09%2fpedro-I.jpg&ehk=vmrrF5lInzuFX%2fOjIEXBoDMJfvvJNy49uGjO51ZoV1Q%3d&risl=&pid=ImgRaw&r=0" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Dom Pedro I(Primeiro Imperador do Brasil)</p>
+				
+				<h3>Independência</h3>
+				<p>A independência do Brasil, proclamada por D. Pedro I em 7 de setembro de 1822, foi um processo complexo, influenciado por transformações políticas e econômicas iniciadas com a chegada da família real portuguesa em 1808. Durante o Período Joanino, o Brasil experimentou avanços significativos, como a abertura dos portos, a criação de instituições culturais e a elevação a Reino Unido em 1815, rompendo formalmente seu status colonial. No entanto, a Revolução Liberal do Porto (1820) pressionou pelo retorno de D. João VI a Portugal e pela revogação dessas conquistas, despertando no Brasil um movimento autonomista.</p>
+				<p>A resistência liderada por D. Pedro, marcada pelo "Dia do Fico" (9 de janeiro de 1822) e pelo decreto do "Cumpra-se", culminou no rompimento definitivo com Portugal. Apesar do simbolismo do Grito do Ipiranga, a independência não foi pacífica: províncias como Bahia, Pará, Maranhão e Cisplatina resistiram, gerando conflitos armados que se estenderam até 1824. A coroação de D. Pedro I como imperador consolidou a monarquia brasileira, única nas Américas à época, mas o preço foi alto—o país assumiu uma dívida de 2 milhões de libras como indenização a Portugal.</p>
+				<p>A independência preservou estruturas coloniais, como a escravidão e a elite agrária, mas representou o primeiro passo na construção de uma identidade nacional. Embora limitada por continuísmos, a emancipação política abriu caminho para a formação do Estado brasileiro, misturando tradição e ruptura em um legado que ainda define o país hoje.</p>
+                   
+				<h4><strong>Maria Quitéria (Heroína da Independência do Brasil)</strong></h4>
+				<p class="image-caption">Maria Quitéria (1792–1853) foi uma heroína da Independência do Brasil, reconhecida como a primeira mulher a integrar o Exército Brasileiro. Nascida em 27 de julho de 1792 na Fazenda Serra da Agulha, em Feira de Santana (BA), era filha do fazendeiro Gonçalo Alves de Almeida e de Quitéria Maria de Jesus. Órfã de mãe aos 10 anos, assumiu responsabilidades domésticas e desenvolveu habilidades incomuns para mulheres da época, como montaria e manejo de armas, devido à vida rural</p>
+				<p class="image-caption">Em 1822, após a proclamação da Independência, a Bahia ainda resistia ao domínio português. Maria Quitéria pediu permissão ao pai para alistar-se no Exército, mas foi recusada. Com a ajuda da irmã, vestiu-se de homem, usando o nome do cunhado, "Soldado Medeiros", e juntou-se ao Batalhão dos Voluntários do Príncipe. Seu disfarce foi descoberto, mas sua habilidade em combate garantiu sua permanência. Lutou em batalhas decisivas, como Ilha da Maré, Barra do Paraguaçu e Itapuã, sendo promovida a cadete em março de 1823 </p>
+				<p class="image-caption">Após a vitória brasileira em 2 de julho de 1823, foi condecorada por Dom Pedro I com a Ordem Imperial do Cruzeiro do Sul e recebeu uma pensão vitalícia. Retornou à Bahia, reconciliou-se com o pai e casou-se com Gabriel Pereira de Brito, com quem teve uma filha, Luísa Maria da Conceição. Viveu anos difíceis após a viuvez, morrendo em Salvador em 21 de agosto de 1853, quase cega e em relativo anonimato</p>
+				<p class="image-caption">Seu legado foi resgatado no século XX: em 1996, tornou-se patronesse do Quadro Complementar de Oficiais do Exército, e em 2018, seu nome foi inscrito no Livro dos Heróis e Heroínas da Pátria. Maria Quitéria simboliza a resistência feminina e a luta pela liberdade, sendo comparada à Joana d'Arc brasileira</p>
+				<img src="https://tse1.explicit.bing.net/th/id/OIP.iCRkixPcq5UNwmaGvefXEgHaHM?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">Maria Quitéria (Heroína da Independência do Brasil)</p>
+				   
+				<h3>Conclusão</h3>
+				<p>O Período Colonial brasileiro, que se estendeu por mais de três séculos, foi marcado por profundas transformações que moldaram a identidade do país. Desde a chegada dos portugueses em 1500 até a proclamação da Independência em 1822, o Brasil passou de uma terra de exploração esporádica para uma colônia consolidada, com estruturas econômicas, sociais e políticas complexas.</p>
+				<p>A colonização foi sustentada por ciclos econômicos — pau-brasil, açúcar, ouro e drogas do sertão —, todos baseados na exploração de recursos naturais e na mão de obra escravizada, primeiro indígena e depois africana. A sociedade colonial era profundamente hierárquica, dividida entre uma elite branca e uma massa de escravizados, enquanto a Igreja Católica exercia forte influência cultural e religiosa.</p>
+				<p>Conflitos como as invasões francesas e holandesas, além de revoltas nativistas (como a Inconfidência Mineira e a Conjuração Baiana), revelaram tensões entre colonos e metrópole, mostrando os primeiros sinais de um sentimento autonomista. A chegada da família real portuguesa em 1808 acelerou as mudanças, modernizando o país e preparando o terreno para a ruptura política.</p>
+				<p>Com a Independência, em 1822, o Brasil deixou de ser colônia, mas manteve estruturas coloniais, como a escravidão e a dependência econômica de elites agrárias. O Período Colonial legou uma sociedade desigual, mas também uma cultura rica e miscigenada, fruto do encontro entre indígenas, africanos e europeus. Seu fim não significou uma ruptura radical, mas sim o início de um novo capítulo na construção do Brasil como nação.</p>
+		
+            </div>
+        </div>
+        
+
+        <!-- Período Imperial -->
+        <div class="era-section imperial">
+            <div class="era-header">
+                <h2>Período Imperial (1822-1889)</h2>
+            </div>
+            <div class="era-content imperial-content">
+			
+                <h3>Era Imperial Brasileira: Política, Economia, Sociedade e Conflitos (1822-1889)</h3>
+				<p>O período imperial brasileiro, que se estendeu de 1822 a 1889, foi marcado por transformações profundas na política, economia e sociedade, além de conflitos internos e externos que moldaram a formação do Brasil como nação independente. Dividido em três fases principais — Primeiro Reinado (1822-1831), Período Regencial (1831-1840) e Segundo Reinado (1840-1889) —, esse período testemunhou a consolidação de instituições, a expansão econômica baseada no café e a luta pela abolição da escravidão, culminando na Proclamação da República.</p>
+           
+		        <h3>Primeiro Reinado (1822 - 1831)</h3>
+				<p>O Primeiro Reinado corresponde ao período de 7 de setembro de 1822 (Independência do Brasil) a 7 de abril de 1831 (abdicação de Dom Pedro I). Esta fase inaugurou o período histórico do Brasil Império, no qual o país foi governado por D. Pedro I. O Primeiro Reinado foi marcado por disputas entre as elites agrárias e o Imperador, além de conflitos regionais no Nordeste e na Cisplatina. Porém, foi o momento no qual o Brasil construiu suas bases como Estado-nação. Este período chegou ao fim com a abdicação de D. Pedro I, por causa da crescente insatisfação popular. D. Pedro II, que tinha apenas cinco anos, assumiu o trono em seu lugar.</p>
+		        
+				<h4>Pontos Importantes do Primeiro Reinado</h4>
+				<ul>
+				<li>O Primeiro Reinado (1822-1831) marcou o início do Império Brasileiro, com Dom Pedro I como imperador. Este período foi inaugurado pela independência do Brasil de Portugal.</li>
+				<li>Um evento chave desta época foi a criação da Constituição Brasileira em 1824. A Constituição definiu a estrutura do novo estado e incluiu o 'Poder Moderador', que deu ao imperador um poder significativo. Para muitos brasileiros, o Poder Moderador era visto como uma forma de o imperador centralizar o controle do governo.</li>
+				<li>O Primeiro Reinado enfrentou inúmeros desafios, incluindo conflitos internos e crises econômicas. Por exemplo, a Confederação do Equador, um movimento separatista, surgiu na região nordeste em 1824.</li>
+				<li>As dificuldades econômicas surgiram de fatores como a queda dos preços de exportação de produtos brasileiros como o algodão, o açúcar e o tabaco. Estas dificuldades econômicas foram exacerbadas por conflitos internos e guerras dispendiosas.</li>
+				<li>O reinado de Dom Pedro I terminou com a sua abdicação em 1831, o que levou ao Período Regencial até que o seu filho, Dom Pedro II, atingisse a maioridade. Esta decisão resultou de um descontentamento público generalizado, problemas econômicos e intensa pressão política.</li>
+				<ul>
+				
+				<h3>Antecedentes: O processo de independência do Brasil</h3>
+				<p>A Assembleia Constituinte foi convocada por D. Pedro I e se reuniu pela primeira vez no dia 3 de maio de 1823 para elaborar a primeira Constituição do Brasil. A declaração de D. Pedro I de que defenderia a pátria e a constituição desde que “fosse digna dele e do Brasil”, desencadeou vários desentendimentos entre os deputados liberais radicais e o imperador, o que levou D. Pedro a dissolver a Assembleia seis meses depois. Após a dissolução da Assembleia, D. Pedro I escolheu uma comissão de dez pessoas de sua confiança e encarregou-as de elaborar uma Constituição para o País.</p>
+				<p>Em 16 dias estava pronta, baseada no projeto que fora elaborado pela Constituinte. No dia 25 de março de 1824, D. Pedro I jurou obedecer a Carta Magna que outorgava ao Brasil. A Constituição de 1824 estabelecia a monarquia constitucional como regime político e os três Poderes: Executivo, Legislativo e Judiciário. Além disso, criava o Poder Moderador, que funcionaria como um contrapeso onde o Imperador poderia mediar entre os três poderes em caso de crise. Esta concentração de poderes nas mãos do imperador recebeu críticas de diversas províncias. Foi o caso de Pernambuco onde se iniciou uma revolta de caráter separatista em 1824, com adesão da Paraíba, do Rio Grande do Norte e do Ceará que criaram a Confederação do Equador.</p>
+				<p>O movimento conseguiu por manter-se no governo pouco tempo. A repressão foi violenta e um dos líderes, o popular pernambucano Frei Caneca (1779-1825), foi preso e fuzilado.</p>
+				
+				<h3>Principais acontecimentos do Primeiro Reinado</h3>
+				<p>O Primeiro Reinado foi o período inicial da formação do Estado brasileiro. A partir de 1823, com a consolidação da Independência, era necessário construir uma nova organização política.</p>
+				<h4>Manutenção da unidade nacional</h4>
+				<p>Historiadores defendem que as elites brasileiras apoiaram a manutenção do governo monárquico de D. Pedro I, e não a instauração de república, com o objetivo de manter a unidade nacional após a Independência.</p>
+				<p>Havia o receio de uma desintegração semelhante à ocorrida nas antigas colônias da América Espanhola, que se dividiram em diversos países independentes.</p>
+				<p>A unidade em torno da figura do imperador, além de fortalecer a economia, também possibilitou a manutenção da escravidão, desejo das elites agrárias, apesar da já presente pressão inglesa pela extinção do comércio de pessoas escravizadas. A escravidão foi abolida no Brasil somente em fins do Segundo Reinado, em 1888.</p>
+				<h4>Constituição de 1824</h4>
+				<p>A primeira constituição brasileira (1824) foi elaborada durante o Primeiro Reinado. Uma vez terminadas as batalhas pela independência na Bahia, uma assembleia constituinte, formada por 90 deputados eleitos entre grandes proprietários e juristas, foi reunida para redigir a Constituição do novo país em maio de 1823.</p>
+				<p>Após muitas discussões, uma primeira versão foi apresentada ao Imperador. Elaborada a partir do projeto do deputado Antônio Carlos de Andrada (irmão de José Bonifácio), esta primeira versão do texto ficou conhecida pelo apelido de Constituição Mandioca, pois definia a produção anual deste alimento, base da alimentação dos escravizados, como critério para definição de quem poderia participar das eleições. Ou seja: quanto maior a produção de mandioca, maior a quantidade de escravizados e maior a riqueza.</p>
+				<p>Contudo, como esse primeiro projeto de constituição limitava os poderes de D. Pedro I, ele fecha a Assembleia, ordena a prisão e exílio de alguns deputados. Uma nova Constituição foi escrita, desta vez elaborada por um Conselho de Notáveis, formado por apenas 10 membros escolhidos pelo imperador.</p>
+				<p>A Constituição foi outorgada em 1824. Nesta nova Carta Magna estava o Poder Moderador, que seria exercido pelo imperador, em caso de conflito entre os poderes Legislativo, Executivo e Judiciário.</p>
+				<p>Inspirado nas ideias do intelectual de origem suíça Benjamin Constant, o Poder Moderador foi visto, por muitos brasileiros, como uma forma do Imperador centralizar em si os demais poderes do governo.</p>
+				<h4>A Constituição de 1824 também definiu:</h4>
+				<ul>
+				<li>A forma de governo como monárquico, hereditário e constitucional;</li>
+				<li>Divisão do país em províncias, com presidentes nomeados pelo imperador;</li>
+				<li>Manteve a religião católica como oficial e subordinada ao Estado, permitindo porém o culto privado de outras religiões;</li>
+				<li>Eleições indiretas e censitárias.</li>
+				</ul>
+				<p>O sistema eleitoral determinado na Constituição de 1824 era somente para o Legislativo e excluía a participação política da maioria da população brasileira, pois era censitário, ou seja: o critério para determinar quem tinha o direito de votar era econômico.</p>
+				<p>As mulheres estavam excluídas de todo o processo eleitoral, embora a Constituição não tocasse no assunto de forma direta. O mesmo se dava à maioria da população de escravizados libertos. Contudo, não havia restrições ao voto dos analfabetos.</p>
+				<p>As eleições eram indiretas. Nas eleições primárias, cidadãos com renda de pelo menos 100 mil réis anuais votavam nos eleitores que, por sua vez, deveriam ter renda anual de 200 mil réis e não podiam ser escravos libertos. Era este grupo de eleitores que votava para escolher os deputados, cujos critérios eram ser homens católicos com renda anual de pelo menos 400 mil réis.</p>
+				<p>Por sua vez, o Senado era formado por membros vitalícios e indicados pelo imperador, a partir de lista tríplice de cada província.</p>
+				<img src="https://static.todamateria.com.br/upload/do/mp/dompedroprimeiroreinadopintura-cke.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"Retrato de D. Pedro I segurando exemplar da Constituição brasileira de 1824. Pintura de Manuel de Araújo Porto Alegre (1826)"</p>
+				
+				<h3>Confederação do Equador (1824)</h3>
+				<p>O caráter centralizador da Constituição de 1824 enfrentou resistências, sendo a maior delas a Confederação do Equador (1824). A Confederação do Equador foi um movimento revolucionário e emancipacionista de cunho republicano e separatista, ocorrido na região Nordeste, entre as províncias de Pernambuco, Piauí, Ceará, Rio Grande do Norte, Paraíba, Sergipe e Alagoas. O movimento, que teve entre seus líderes Frei Caneca e Cipriano Barata, iniciou-se com a revolta pela nomeação imperial de um presidente de província que desagradava a população pernambucana.</p>
+				<p>A Confederação do Equador buscava a construção de uma república independente, com capital no Recife. "Confederação", pois o movimento era inspirado no modelo dos Estados Unidos da América (republicano e federalista), e "do Equador" pela proximidade com a linha geográfica de mesmo nome. O movimento foi fortemente reprimido pelas forças imperiais, lideradas pelo almirante britânico Thomas Cochrane. A maioria dos líderes foram presos e executados.</p>
+				<img src="https://static.todamateria.com.br/upload/ex/ec/execucaodefreicaneca.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"A Execução de Frei Caneca (1824), pintura de Murillo La Greca"</p>
+				
+				<h3>Crise do Primeiro Reinado</h3>
+				<p>Um conjunto de motivos levou ao declínio do governo de D. Pedro I e a crescente perda da base de apoio do Primeiro Reinado, dentre os quais podemos destacar:</p>
+				<ul>
+				<li>A Guerra da Cisplatina;</li>
+				<li>O contexto de crise econômica;</li>
+				<li>As disputas pela sucessão da Coroa Portuguesa;</li>
+				<li>As manifestações populares contra o imperador;</li>
+				</ul>
+				
+				<h3>Guerra da Cisplatina</h3>
+				<p>A região da Cisplatina (atual Uruguai) era um local de tensão e atrito desde o período colonial. A disputa pela Cisplatina teve como marco estipulado pelos historiadores o ano de 1680, quando a Coroa Portuguesa autorizou a construção de um forte na margem oriental do Rio da Prata. Surgia nesse momento a Colônia de Sacramento. A Colônia de Sacramento foi alvo de intensa disputa entre portugueses e espanhóis. Foram assinados diversos tratados territoriais entre as duas nações, tais como o Tratado de Madrid (1750), o Tratado de El Pardo (1761) e o Tratado de Santo Ildefonso (1777). No entanto, apesar dos tratados, a disputa e a indefinição acerca do controle de Sacramento permaneceram durante o século XIX.</p>
+				<p>A partir de 1808, D. João VI transferiu a Corte Portuguesa para o Brasil por conta da invasão de Portugal pelas tropas napoleônicas. O impacto disso no Brasil foi imediato, inclusive na questão das relações internacionais. Em represália à ação dos espanhóis de permitir que as tropas francesas cruzassem seu território para invadir Portugal, D. João ordenou a invasão de Sacramento e nomeou a região de Cisplatina. Aconteceram duas invasões dos portugueses na região. Em 1816, a Cisplatina foi invadida de maneira definitiva e agregada ao território de Reino de Portugal, Brasil e Algarves. As tropas brasileiras eram lideradas por Francisco Frederico Lecor e eram formadas por aproximadamente 14 mil soldados. Os objetivos, conforme lista Chico Castro, eram dois|1|: Reunir sob o domínio português as colônias espanholas e Expulsar um revolucionário local chamado José Artigas.</p>
+				<p>A ocupação da Cisplatina por Portugal aumentou a tensão e o desgaste que existiam na região platina porque o comandante Lecor indispôs-se bastante com a população local, agindo de maneira autoritária. Além disso, o desgaste do Reino de Portugal com as Províncias Unidas, sobretudo, com a elite portenha (de Buenos Aires), aumentou consideravelmente. Em 1822, o Brasil declarou a sua independência sob a liderança de Dom Pedro I, e a anexação da Cisplatina ao território brasileiro foi confirmada. A região, inclusive, mandou representantes para a Assembleia Constituinte que redigiu a primeira Constituição do Brasil (a que foi rejeitada por D. Pedro I em 1823).</p>
+				<p>Por causa da tensão permanente na Cisplatina, iniciou-se uma rebelião, em 1825, organizada por Juan Antonio Lavalleja. Nessa rebelião, Lavalleja e seus aliados (conhecidos como “33 orientais”) declararam a separação da Cisplatina do Brasil e a sua vinculação com as Províncias Unidas. Essa atitude de Lavalleja aconteceu porque ele e seus aliados estavam sendo apoiados material e financeiramente pelos portenhos.</p>
+				<h4>Objetivos da Guerra da Cisplatina</h4>
+				<ul>
+				<li><strong>Brasil:</strong>colocar fim à rebelião na Cisplatina e retomar o controle da região.</li>
+				<li><strong>Uruguai:</strong>do movimento liderado por Lavalleja, o objetivo principal era anexar-se às Províncias Unidas, mas havia uruguaios que defendiam a independência.</li>
+				<li><strong>Províncias Unidas:</strong>garantir a anexação da Cisplatina ao seu território.</li>
+				</ul>
+				<h4>Batalhas da Guerra da Cisplatina</h4>
+				<p>Uma vez deflagrada a rebelião na Cisplatina, a ação do imperador foi de intervir militarmente para evitar a perda da província. A rebelião foi iniciada em abril de 1825, e as ações tomadas pelo imperador a partir desse momento foram entendidas pelos historiadores como precipitadas. Chico Castro sugere dois erros capitais cometidos entre o início da rebelião e a declaração formal de guerra: "Decreto de dezembro de 1825 que impedia a circulação de navios nos portos da região platina e o Anúncio de D. Pedro I oferecendo recompensas pela captura de Lavalleja e Frutuoso Rivera (militar aliado da rebelião).</p>
+				<p>As ações de D. Pedro I serviram apenas para agravar os ânimos na Cisplatina. Além disso, os altos gastos e a truculência de Lecor contra a população local não foram de serventia alguma para o Brasil. A guerra foi oficialmente declarada em 10 de dezembro de 1825, mas os historiadores apontam que antes disso já haviam acontecido batalhas entre as tropas brasileiras e as tropas republicanas (rebeldes da Cisplatina).</p>
+				<p>Para piorar a situação do Brasil, a economia estava em frangalhos, e o Império mal tinha condições de pagar o funcionalismo. Mesmo assim, D. Pedro I optou por declarar a guerra contra as Províncias Unidas na data mencionada. Durante o conflito, algumas batalhas foram travadas, sendo a maioria delas conflitos de pequena escala. Algumas das batalhas da Guerra da Cisplatina foram:</p>
+				<h4>Batalha do Rincão das Galinhas</h4>
+				<p>O general Frutuoso Rivera, penetrando no Rincón de las Gallinas ou de Haedo, perseguiu um destacamento brasileiro de 50 homens, que guardava a entrada dessa península, formada pelas águas do rio Negro e do Uruguai, e apoderou-se de uma reserva de seis mil cavalos que ali tinha o general José de Abreu (barão de Cerro Largo), então acampado perto de Mercedes, na margem oposta do rio Negro.</p> 
+				<p>Os tiros de dois navios da esquadrilha do Uruguai, comandados por Sena Pereira, detiveram o inimigo, e parte do destacamento pôde salvar-se a bordo desses navios, com a perda de uns 20 mortos e prisioneiros. Rivera tinha 250 homens de cavalaria (300 ou 400, segundo a versão brasileira), e ocupava-se em fazer reunir a cavalhada, quando recebeu aviso de que entrava no Rincón, avançando na maior desordem, uma coluna brasileira.</p>
+				<p>Vendo-se sem retirada possível, reuniu a sua gente e emboscou-a um pouco acima do arroio Pantanoso. 'Tinha a maior confiança em que os inimigos deviam ignorar que nos encontrávamos já no Rincón, e, por conseguinte, se aproximaria de nós como que vinha encontrar-se com seus amigos', disse Rivera, ao dar conta da surpresa. Os brasileiros, acrescentava, 'vinham fazendo as marchas mais extraordinárias e precipitadas que se podia imaginar'.</p>
+				<p>O general Abreu, em ofício de 12 de setembro, dirigido ao ministro da Guerra, anunciava estar esperando a incorporação desses 400 homens, e não de 700, como escreveu Rivera, para aumentar a importância da sua vitória. Eram dois regimentos incompletos de cavalaria de milícias, compostos dos guaranis do distrito de Missões, do 24º, com 190 homens, e do 25º,com 230, comandados pelos coronéis José Luís Mena Barreto e Jerônimo Gomes Jardim. Encontraram-se em Paissandu e desde aí marchavam pelo mesmo caminho, mas sem acordo algum, porque o coronel Mena Barreto, apesar de mais moderno, não se quis apresentar ao coronel Jardim.</p>
+				<p>Forçando as marchas e cansando os cavalos, cada um desses coronéis procurava chegar antes do outro ao Rincón. Foi assim que Rivera, caindo repentinamente sobre o 25º regimento, o destroçou completamente e, meia légua (cerca de 3,3 km) adiante, encontrou o 24º, que também foi surpreendido em marcha, com os cavalos em mísero estado. O coronel Mena Barreto, cercado de alguns oficiais e milicianos, não quis acompanhar os outros na fuga; recusou-se render-se e morreu combatendo. A nossa perda foi de uns 120 mortos e prisioneiros, pois é ponto averiguado que os dois corpos derrotados apenas tinham um efetivo de 420 homens e que o coronel Jardim, reunindo os dispersos, fez a sua retirada para o Arapeí à frente de 300 (ver 14 de outubro).</p>
+				<p>Além do coronel José Luís Mena Barreto, morreram nesta surpresa 15 oficiais brasileiros. O coronel contava apenas 27 anos e muito se distinguira nas campanhas de 1816 e de 1820. Era filho do marechal João de Deus Mena Barreto, visconde de São Gabriel, e irmão dos generais João Propício (barão de São Gabriel) e João Manuel Mena Barreto. Deixou um filho, José Luís, que também foi general, e, como estes dois últimos, se assinalou na nossa última guerra. O combate do Rincón foi o primeiro revés que sofremos, depois de continuadas vitórias nas campanhas do sul, de 1801 a 1820, quando tínhamos sobre os nossos vizinhos a superioridade da disciplina e da instrução militar. Dias depois (12 de outubro), deu-se o combate do Sarandí, mais desastroso do que este.</p>
+				<p><strong>Consequencias</strong></p>
+				<p>A derrota brasileira neste combate, inflacionado pelo lado uruguaio, e sobretudo a perda da Cavalhada, no dia anterior, teve grande repercussão na região (e no exterior) e fez com que as tropas brasileiras, que dominavam o interior uruguaio, recuassem para as áreas urbanizadas do litoral. Ela também foi causa de uma grande vitória uruguaia, no mês seguinte, na Batalha de Sarandi (12 de outubro), quando tropas brasileiras sob o comando do Coronel Bento Manuel Ribeiro foram derrotadas pelos então insurgentes numa fracassada tentativa brasileira de recuperação da iniciativa perdida.</p>
+				
+				<h4>Batalha de Juncal</h4>
+				<p>A Batalha de Juncal foi um confronto naval decisivo entre as Províncias Unidas do Rio da Prata, lideradas pelo almirante Guillermo Brown, e o Império do Brasil, comandado pelo capitão Jacinto Roque de Sena Pereira, ocorrido em 8 e 9 de fevereiro de 1827, no rio Uruguai, durante a Guerra da Cisplatina. O conflito teve origem na invasão luso-brasileira da Província Oriental (1816-1820), anexada ao Brasil como Cisplatina. Em 1825, os "Trinta e Três Orientais", apoiados por Buenos Aires, iniciaram uma revolta pela reintegração às Províncias Unidas, levando o Brasil a declarar guerra em 1826.</p>
+				<p>A Terceira Divisão Naval brasileira, destinada a controlar o rio Uruguai e isolar as tropas argentinas, foi interceptada por Brown, que, com inteligência superior e artilharia precisa, derrotou os brasileiros. Em dois dias de combate, doze navios brasileiros foram capturados, três incendiados e apenas dois escaparam, sem perdas argentinas. A vitória impediu o avanço brasileiro e cortou suas linhas de abastecimento. Após a batalha, Brown fortificou Martín García e repeliu a Divisão Mariath, que não conseguiu reforçar Sena Pereira. Apesar do triunfo, a guerra continuou em impasse até a Convenção Preliminar de Paz (1828), que resultou na independência do Uruguai.</p>
+				<p>A Batalha de Juncal destacou-se como a maior vitória naval argentina no conflito, consolidando a reputação de Brown e demonstrando a eficácia de sua estratégia, embora a superioridade naval brasileira tenha se reafirmado posteriormente em Monte Santiago.</p>
+				<img src= "https://elhistoriadores.wordpress.com/wp-content/uploads/2017/11/juncal_muraturejose_1865.png" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"Ilustração da Vitoria Naval Argentina na Batalha de Juncal"</p>
+				
+				<h4>Batalha de Ituzaingó</h4>
+				<p>O exército argentino-oriental, comandado pelo general Carlos María de Alvear, posicionou-se nas lombadas a oeste do Passo do Rosário, enquanto o exército brasileiro, liderado pelo Marquês de Barbacena, ocupou a lombada oriental. O vale entre essas elevações era cortado por um barranco, dificultando a movimentação. A batalha ocorreu nesse terreno, com os brasileiros avançando após uma marcha forçada, enquanto os aliados estavam descansados e em posição vantajosa.</p>
+				<p>A cavalaria aliada era numericamente superior (3 para 1) e melhor posicionada. A batalha começou com trocas de artilharia e cargas de cavalaria. O coronel Bento Gonçalves da Silva retirou-se do vale alegando cansaço dos cavalos, enquanto Barbacena enviou sua infantaria para atacar o centro aliado, defendido por Lavalleja. A brigada do coronel Miguel Pereira repeliu os Colorados de Conchas, enquanto os voluntários do barão de Cerro Largo enfrentaram Manuel Oribe.</p>
+				<p>O general francês Brandsen, veterano das guerras napoleônicas, liderou uma carga contra a infantaria brasileira, mas foi morto junto com outros oficiais. Apesar das perdas, os brasileiros mantiveram suas formações. Enquanto isso, os dragões orientais e couraceiros atacaram o flanco brasileiro, causando desordem e levando à morte do barão de Cerro Largo. A bagagem brasileira foi saqueada, e os aliados ameaçaram envolver as tropas de Barbacena.</p>
+				<p>Apesar da resistência da infantaria brasileira, que nunca teve seus quadros rompidos, a superioridade da cavalaria e artilharia aliada, bem posicionada em elevações, forçou Barbacena a ordenar a retirada às 14h. O exército brasileiro recuou em ordem, mantendo quase toda sua artilharia, e reagrupou-se posteriormente. Os aliados não perseguiram com vigor, limitando-se a acompanhar a retirada à distância. A batalha mostrou a eficácia da infantaria brasileira em resistir a cargas de cavalaria, mas a iniciativa estratégica ficou com as forças de Alvear.</p>
+				<p><strong>A vitória</strong></p>
+				<p>A batalha durou onze horas. O fim dessa batalha, certamente não significou o fim dos conflitos. Mas o resultado, apesar de vista a vitória pelos argentinos e uruguaios, devido ao fato de os brasileiros se retirarem do campo de combate, ainda suscita controvérsia. A vontade brasileira não venceu, mas também a sua oponente não triunfou, visto que o interesse declarado era o de anexar a província cisplatina às Províncias Unidas e retomar o vice-reinado de Buenos Aires.</p>
+				<p>Os republicanos encontraram uma partitura, e a levaram como troféu. Alegaram que Dom Pedro I teria mandado compor a Marcha da Vitória para comemorar o sucesso brasileiro. Os argentinos rebatizaram a melodia de Marcha de Ituzaingó e desde então tocam a música em todas as cerimônias oficiais do presidente da república, sendo um dos atributos do próprio cargo.</p>
+				<img src= "https://upload.wikimedia.org/wikipedia/commons/c/c9/Jos%C3%A9_Wasth_Rodrigues_-_Batalha_de_Ituzaing%C3%B3%2C_Acervo_do_Museu_Paulista_da_USP.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"Batalha de Ituzaingó, de José Wasth Rodrigues."</p>
+				
+				<h3>Crise Economica</h3>
+				<p>A situação econômica brasileira durante o Primeiro Reinado era muito ruim. O Brasil comercializava produtos cujos preços de exportação estavam caindo no mercado internacional, tais como algodão, açúcar e tabaco. A produção de café começava a se expandir. Contudo, o desenvolvimento do “ouro verde”, como era chamado, não era ainda suficiente para evitar a crise econômica.</p>
+				<p>Havia ainda o aumento da dívida pública, incluindo os empréstimos feitos com os ingleses para pagar a indenização requerida por Portugal para reconhecer a Independência (o que ocorreu em 1825). Os gastos com conflitos internos, especialmente com a Guerra da Cisplatina, também foram elevados, obrigando o governo a recorrer a empréstimos com a Inglaterra.</p>
+				
+				<h3>Disputas pela sucessão da Coroa Portuguesa</h3>
+				<p>A popularidade de D. Pedro I ficou ainda mais abalada devido ao seu envolvimento com a questão sucessória em Portugal. Mesmo tendo proclamado a independência do Brasil, D. Pedro I ainda se considerava herdeiro do trono português. Com a morte de D. João VI, em 1826, cresceram os temores de que o imperador abandonasse o Brasil para ser aclamado rei em Portugal. D. Pedro I chegou a ser aclamado como rei de Portugal (com o título de D. Pedro IV), entre março e maio de 1826, abdicando do título em favor de sua filha, Dona Maria da Glória.</p>
+				<p>Pressionado, D. Pedro I envia sua filha D. Maria da Glória (de apenas sete anos de idade) a Portugal para assumir o poder, com seu tio D. Miguel, assumindo a regência de Portugal até a menina alcançar a maioridade. Contudo, D. Miguel se proclama rei de Portugal, provocando a reação de D. Pedro I, que declara guerra contra seu irmão. Para tanto, foram necessários ainda mais gastos, com o financiamento e envio de tropas, aumentando ainda mais a perda de apoio ao seu governo.</p>
+				<img src="https://static.todamateria.com.br/upload/li/be/liberalwars-cke.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"Caricatura de Honoré Daumier (1833) sobre a disputa entre D. Pedro I e D. Miguel pela Coroa Portuguesa"</p>
+				
+				<h3>Manifestações populares contra o imperador</h3>
+				<p>Além dos fatos citados acima, no Brasil, o descontentamento com o Imperador chegava às ruas sob formas de protestos. Também houve a suspeita de que o assassinato do jornalista crítico do governo Líbero Badaró, ocorrido em 1830, crítico do governo, teria sido ordenado pelo Imperador, trazendo mais revolta às ruas. Um destes protestos ficou conhecido como a Noite das Garrafadas, ocorrida em 13 de março de 1831. Portugueses, que não apoiavam a separação de Brasil e Portugal, e brasileiros se enfrentaram nas ruas do Rio de Janeiro.</p>
+				<p>D. Pedro I tinha ido à província de Minas Gerais a fim de angariar apoios para sua causa. Na volta, vários portugueses organizaram uma grande festa para recebê-lo, mas que acabou em confusão entre os brasileiros que reclamavam contra o governo de D. Pedro I. Assustado com a violência das ruas, D. Pedro I decide formar um ministério constituído somente por brasileiros, o "Ministério dos Marqueses". Porém, isto não foi suficiente para acalmar os ânimos.</p>
+				
+				<h3>Abdicação de D. Pedro I</h3>
+				<p>D. Pedro I enfrentou grande dificuldade financeira e política durante seu governo. A concentração de poderes, a violenta repressão à Confederação do Equador, os constantes empréstimos, a falência do Banco do Brasil (1829), entre outros fatores, contribuíram para diminuir o prestígio do imperador junto à população.</p>
+				<p>Igualmente, com a morte de Dom João VI, abriu-se a questão da sucessão do trono português. Dom Pedro I era o herdeiro, mas como já era imperador no Brasil, Dom Miguel, seu irmão, se proclamou rei de Portugal. Dom Pedro I protestou, pois Dom João VI não o havia tirado da linha de sucessão.</p>
+				<p>Decide, então, abdicar do trono brasileiro, depois de dez anos governando o Brasil. Seu herdeiro era Pedro de Alcântara (1825-1891), que tinha pouco mais de cinco anos de idade. A solução, prevista na Constituição, foi formar uma Regência até sua maioridade. Esta época será conhecida como Período Regencial. e só reinou mais tarde, com o título de D. Pedro II.</p>
+				<img src="https://static.todamateria.com.br/upload/ab/di/abdicacaopedroi-cke.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"A abdicação do primeiro Imperador do Brasil, D. Pedro I"</p>
+				
+				<h3>Período Regencial (1831-1840)</h3>
+				<p>Nesse período, governou o Império a Regência Trina Provisória (1831); a Regência Trina Permanente (1831-1835).</p>
+				<p>A Constituição de 1824 determinava que o Império seria governado por uma regência composta por três membros, em caso de minoridade do herdeiro. Em 1834 foram introduzidas alterações importantes no texto constitucional, como o estabelecimento de um regente único do Império. Esta mudança ficou conhecida como o Ato Adicional de 1834.</p>
+				<p>O padre Antônio Feijó (1784-1843), ministro da Justiça, foi eleito para o cargo e tomou posse em 12 de outubro de 1835. A Regência de Diogo Antônio Feijó durou até o ano de 1837, mas diante das crescentes revoltas nas províncias renunciou ao cargo. No ano seguinte, Pedro de Araújo Lima (1793-1870) foi escolhido como novo regente. A regência de Araújo Lima, porém, não conseguiu afastar o clima de insatisfação reinante.</p>
+				<p>No período regencial ocorreram diversas crises políticas, marcadas por rebeliões populares contra a miséria, entre elas: <strong>Cabanagem, Sabinada, Balaiada e Guerra dos Farrapos.</strong></p>
+				
+				<h3>Cabanagem (1835–1840)</h3>
+				<p>A Cabanagem foi uma revolta popular extremamente violenta ocorrida no Grão-Pará durante o período regencial. Envolveu tanto elites locais — que queriam mais autonomia política — quanto a população pobre, que lutava contra a miséria, abuso de autoridade e condições de vida semelhantes à escravidão.</p>
+				<p>A revolta começou em 1835, quando cabanos liderados por Félix Malcher, Francisco Vinagre e Eduardo Angelim tomaram Belém e executaram o governador Bernardo Lobo de Sousa. Houve sucessivas disputas internas entre líderes, o que enfraqueceu o movimento. Em 1836, o governo imperial reagiu com força total, bombardeando cidades e perseguindo revoltosos. Angelim foi preso e o movimento acabou sendo derrotado.</p>
+				<p>O conflito foi um dos mais sangrentos da história do Brasil, resultando em mais de 30 mil mortos — até 40% da população do Grão-Pará. Apesar da derrota, alguns ideais de resistência sobreviveram, e os prisioneiros foram anistiados em 1840 com a ascensão de Dom Pedro II.</p>
+				<h3>Principais líderes da Cabanagem:</h3>
+				<p><strong>Félix Malcher:</strong> Inicialmente um dos líderes da revolta, chegou a ser presidente da Província do Grão-Pará após a tomada de Belém. Sua gestão, contudo, foi breve e marcada por divergências internas, levando à sua deposição e posterior execução pelos próprios cabanos.</p>
+				<img src="https://tse3.mm.bing.net/th/id/OIP.HWZ4beXMNYOboKxuyBPxZQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="" class="content-image-personagens">
+				<p><strong>Francisco Vinagre:</strong>Assumiu o controle após Malcher, mas sua liderança também foi curta devido a conflitos internos e descontentamentos.</P>
+				<img src="https://memoriacomum.org/sites/default/files/preso_politico/CDT_F_LineuMiranda.jpg" alt="" class="content-image-personagens">
+				<p><strong>Eduardo Angelim:</strong>Talvez o mais conhecido dos líderes cabanos, destacou-se por sua persistência e resistência, mesmo frente às adversidades e à intensa repressão imperial.</P>
+				<img src="https://atlas.fgv.br/sites/atlas.fgv.br/files/styles/large/public/marcos/midias/39_2.jpg?itok=zwDT2tKQ" alt="" class="content-image-personagens">
+				<h3>Consequencias da Cabanagem:</h3>
+				<p>Embora a perseguição tenha sido violenta, alguns revolucionários conseguiram escapar e fugiram para a floresta, o que permitiu a sobrevivência dos ideais da cabanagem mesmo após sua derrota.</p>
+				<p>A Cabanagem deixou uma carnificina de mais de trinta mil mortos, cerca 30% a 40% da população da província à época. Dizimou populações ribeirinhas, quilombolas, indígenas, bem como membros da elite local. Também desorganizou o tráfico de escravos e os quilombos se multiplicaram na região.</p>
+				
+				<h3>Sabinada (1837–1838)</h3>
+				<p>A Sabinada foi uma revolta ocorrida em Salvador, Bahia, entre novembro de 1837 e março de 1838. Seu principal líder foi o médico e jornalista Francisco Sabino, conhecido por defender ideias federalistas e maior autonomia para a província. A insatisfação dos baianos surgiu da falta de autonomia política, agravada pela regência conservadora de Araújo Lima. Também contribuiu para o conflito o recrutamento obrigatório imposto à população para a Guerra dos Farrapos e o forte sentimento antilusitano presente na região.</p>
+				<h3>Objetivos do Movimento da Sabinada</h3>
+				<p>Os revoltosos pretendiam criar uma “República Bahiense”, mas apenas temporariamente. Eles queriam que a província permanecesse independente até que Dom Pedro II atingisse a maioridade. O movimento não defendia o fim da escravidão, pois buscava apoio das elites, o que afastou a população escravizada da revolta. A Sabinada começou quando os revoltosos tomaram o Forte de São Pedro na noite de 6 de novembro de 1837 e, no dia seguinte, ocuparam a Câmara Municipal, assumindo o controle de Salvador. Eles formaram um governo provisório e conquistaram vários quartéis ao redor da cidade. Em março de 1838, o governo regencial cercou Salvador por terra e mar, causando escassez de alimentos, fuga da população e o enfraquecimento do movimento.</p>
+                <img src="https://static.todamateria.com.br/upload/fr/an/francisco_sabino_bb.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"Francisco Sabino, líder da revolta que acabou sendo conhecida com o seu nome"</p>
+				<h3>Consequências da Sabinada</h3>
+				<p>A repressão foi violenta e resultou em cerca de duas mil mortes e três mil prisões. Francisco Sabino e o líder Carneiro Rego foram condenados à morte, mas depois anistiados por Dom Pedro II. Outros revoltosos foram executados, degredados ou fugiram para se juntar à Revolução Farroupilha.</p>
+				
+				<h3>Balaiada (1838-1841)</h3>
+				<p>A Balaiada foi uma revolta popular ocorrida no Maranhão entre 1838 e 1841. O movimento surgiu como reação à pobreza extrema da população e ao abuso de poder dos grandes fazendeiros e autoridades locais. O nome da revolta veio dos “balaios”, cestos produzidos na região por artesãos pobres.</p>
+				<h3>Causas da Revolta da Balaiada</h3>
+				<p>A população maranhense vivia em condições miseráveis, enquanto as elites locais disputavam o poder entre dois grupos políticos: os <strong>Bem-te-vis</strong>, liberais, que apoiaram indiretamente os balaios no início da revolta e os <strong>Cabanos</strong>, conservadores. A crise econômica agravada pela concorrência do algodão norte-americano piorou ainda mais a situação, gerando fome, desemprego e revolta. A “Lei dos Prefeitos”, que permitia ao governador nomear prefeitos à vontade, foi o estopim que desencadeou conflitos em várias vilas, dando início ao movimento. A Balaiada começou sem uma liderança unificada, mas três figuras se destacaram. O vaqueiro Raimundo Gomes iniciou o levante ao libertar prisioneiros na cadeia de Vila da Manga, onde seu irmão havia sido preso injustamente. Paralelamente, o artesão Manoel dos Anjos Ferreira, conhecido como Balaio, formou um grupo armado após um soldado violentar suas filhas. Esses dois líderes se uniram ao quilombola Cosme Bento, que comandava cerca de três mil homens. Entre 1838 e 1839, os revoltosos conquistaram importantes vilas, como Caxias e Vargem Grande, e organizaram uma Junta Provisória. O movimento começou a enfraquecer após a morte de Manoel Balaio e a retirada de Cosme para o sertão.</p>
+				<img src="https://static.todamateria.com.br/upload/ba/la/balaiada_1_mapa_bbb.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"Mapa das lutas ocorridas na Balaiada"</p>
+				<h3>A Batalha Final e Repressão da Balaiada</h3>
+				<p>A situação dos rebeldes se agravou quando o experiente militar Luís Alves de Lima e Silva, futuro Duque de Caxias, assumiu o comando das tropas imperiais. Com mais de oito mil soldados bem armados, ele derrotou Raimundo Gomes, que acabou cercado e se rendeu. Em 1840, Dom Pedro II ofereceu anistia a quem se entregasse, levando mais de 2.500 balaios a abandonar a luta. Em 1841, Cosme foi capturado e enforcado, e Raimundo Gomes acabou expulso da província, morrendo no caminho para São Paulo. Ao finalizar a repressão, Luís Alves de Lima e Silva recebeu o título de Barão de Caxias por sufocar o movimento.</p>
+				<h3>Curiosidade sobre a Balaiada</h3>
+				<p>Na cidade de Caxias existe hoje o Memorial da Balaiada, dedicado à memória da revolta e de seus participantes.</p>
+				
+				<h3>Guerra dos Farrapos (1835–1845)</h3>
+				<p>A Guerra dos Farrapos, também chamada de Revolução Farroupilha, foi a mais longa revolta do período regencial. Ocorreu no Rio Grande do Sul entre 1835 e 1845, movida principalmente pelos grandes proprietários de terra gaúchos, que estavam insatisfeitos com os altos impostos cobrados pelo governo imperial sobre produtos como charque, couro e sebo. Como o charque gaúcho pagava 25% de imposto, enquanto o uruguaio pagava apenas 4%, os estancieiros viam a república como meio de conquistar liberdade econômica e política. Muitos negros escravizados também lutaram na revolta sob a promessa de liberdade em caso de vitória.</p>
+				<h3>Causas e Início da Revolta</h3>
+				<p>A sociedade gaúcha era altamente militarizada e influenciada por ideias republicanas vindas das repúblicas platinas. Em 1835, a nomeação de Antônio Rodrigues Fernandes Braga como presidente da província aumentou o descontentamento. No dia 20 de setembro daquele ano, um grupo de cerca de 200 cavaleiros iniciou a revolta perto de Porto Alegre, obrigando Fernandes Braga a fugir para Rio Grande. Em 1836, Bento Gonçalves proclamou a República do Piratini.</p>
+				<img src="https://static.todamateria.com.br/upload/re/vo/revolucaofarroupilha-cke.jpg" alt="" class="content-image-personagens">
+				<p class="subtitulo-image">"Carga da Cavalaria (1893), de Guilherme Litran, retratando a Revolução Farroupilha"</p>
+				<h3>Avanço dos Rebeldes</h3>
+				<p>Mesmo após a prisão de seus líderes, como Bento Gonçalves — que escapou do Forte do Mar na Bahia nadando — o movimento se expandiu. Com o apoio de Giuseppe Garibaldi, os farroupilhas reforçaram suas forças. Em 1839, David Canabarro e Garibaldi tomaram Laguna, em Santa Catarina, proclamando a República Juliana, aliada à República Rio-Grandense. A luta seguiu intensa, mesmo após a anistia geral oferecida pela maioridade de Dom Pedro II em 1840.</p>
+				<h3>Massacre de Porongos e Fim da Guerra</h3>
+				<p>A partir de 1842, Luís Alves de Lima e Silva, futuro Duque de Caxias, assumiu a missão de pacificar a província. Um dos episódios mais marcantes foi o Massacre de Porongos, em 1844, quando tropas imperiais atacaram o acampamento farroupilha, especialmente os lanceiros negros, que ficaram sem apoio dos próprios companheiros.A guerra terminou em 1845 com o Tratado de Poncho Verde, que garantiu anistia, incorporação dos oficiais farroupilhas ao exército imperial, diminuição de impostos, devolução de terras e liberdade aos escravizados que lutaram na guerra. Apesar da derrota militar, politicamente os farroupilhas saíram fortalecidos.</p>
+				
+				<p>A antecipação da maioridade de D. Pedro II foi apresentada como solução para a luta entre facções políticas e os protestos nas províncias, pois o imperador seria um poder neutro e uma figura de autoridade legítima. A maioridade antecipada do imperador foi proclamada em 23 de julho de 1840, perante a Assembleia Geral. Ele subiu ao trono com a idade de 14 anos e 7 meses.</p>
+				
+				<h3>O Segundo Reinado (1840-1889)</h3>
+				<p>D. Pedro II governou o Brasil durante quase meio século. O início desse período foi marcado pelas lutas partidárias pelo poder, dando origem às Revoltas Liberais de São Paulo e de Minas Gerais. Uma delas foi a Revolução Praieira movimento de caráter liberal que ocorreu em Pernambuco. Somente a partir de 1850, o Império conheceu a fase de calmaria na política interna. Por outro lado, a política externa do Brasil, durante o Segundo Reinado esteve voltada para o equilíbrio sul-americano. O objetivo era manter a livre navegação dos rios platinos como o Prata, Uruguai, Paraná, e Paraguai. O Brasil empreendeu três campanhas políticas na região do rio da Prata no período de 1851 e 1870: a Guerra do Prata (também conhecida como Campanha contra Oribe e Rosas) e a Campanha contra Aguirre (Uruguai). Em 1864-1870, o Brasil responderia a invasão do Paraguai, travando uma guerra contra este país. O conflito terminaria com a morte do ditador paraguaio Solano López e a vitória brasileira.</p>
+                <h3>Economia no período imperial</h3>
+                <p>O açúcar, o algodão, o cacau, o tabaco e a borracha representaram parte significativa da produção agrícola durante o Império. No entanto, o produto que passou a ocupar o topo da pauta de exportação brasileira, nesta época, foi o café. Na Região Sudeste, este produto foi responsável pelo aparecimento da aristocracia do Segundo Reinado. Ao mesmo tempo, começava a campanha pela abolição da escravidão em todo o mundo. Isto vai dividir a elite brasileira durante todo o século XIX. O braço escravo começou a ser substituído pelo trabalho livre do imigrante europeu, especialmente a partir de 1848, quando ocorriam várias crises políticas na Europa. A indústria brasileira começou a germinar em 1844 quando foram construídas as primeiras estradas de ferro, mecanização dos engenhos de açúcar, implantação de iluminação a gás, etc. Entre os empresários da segunda metade do século XIX, destacou-se o Barão de Mauá.</p>				
+				
+		   </div>
+        </div>
+
+        
+        <!-- Período Republicano -->
+        <div class="era-section republicano">
+            <div class="era-header">
+                <h2>Período Republicano (1889-Presente)</h2>
+            </div>
+            <div class="era-content">
+                <p>Brasil República é o período da História do Brasil que teve início com a Proclamação da República, em 15 de novembro de 1889, e que vigora até os dias atuais. A república brasileira passou por diversas fases e transformações, com períodos democráticos e ditaduras.</p>
+				<p>Costuma-se dividir esse período em:</p>
+				<ul>
+				<li>Primeira República (ou República Velha): 1889-1930</li>
+				<li>Era Vargas: 1930-1945</li>
+				<li>República Populista: 1945-1964</li>
+				<li>Ditadura Civil-Militar: 1964-1985</li>
+				<li>Nova República: 1989 - presente</li>
+				</ul>
+				
+				<h3>Primeira República ou República Velha (1889-1930)</h3>
+				<p>Após a Proclamação da República no Brasil, instituiu-se imediatamente um governo provisório, chefiado pelo Marechal Deodoro da Fonseca, que deveria dirigir o país até que fosse elaborada uma nova Constituição. No dia 24 de fevereiro de 1891 foi promulgada a segunda Constituição brasileira e a primeira da República. No dia seguinte à promulgação da Constituição, foram eleitos pelo Congresso Nacional, o primeiro presidente e o vice.</p>
+				<p>O período da Primeira República no Brasil é marcado pelo coronelismo, onde ricos proprietários de terras tinham grande poder sobre a população local, controlando as eleições, através do chamado voto de cabresto. A base da economia era a agricultura, tendo o café como principal produto de exportação, com destaque também para a exploração do cacau (Bahia) e do látex (Região Norte). Também foi o período do primeiro grande avanço da industrialização no Brasil, tendo como consequências o surgimento de uma classe operária e a aceleração da urbanização.</P>
+				<p><strong>A Primeira República é dividida em dois períodos:</strong></P>
+				<p><strong>República da Espada (1889-1894):</strong> Em virtude da condição militar dos dois primeiros presidentes do Brasil: Deodoro da Fonseca (1891) e Floriano Peixoto (1891-1894).</P>
+				<p><strong>República Oligárquica (1894-1930):</strong> Período em que as oligarquias agrárias que dominavam o país, ligadas aos estados de São Paulo e Minas Gerais, controlavam a política. Durante este período, conhecido popularmente como “política do café com leite”, apenas três presidentes não procediam de São Paulo e de Minas Gerais. A supremacia política das grandes oligarquias só terminou com a Revolução de 1930.</P>
+				
+				<h3>Era Vargas (1930-1945)</h3>
+				<p>Período em que o chefe do governo brasileiro era o gaúcho Getúlio Vargas. Essa fase é subdividida em:</p>
+				<ul>
+				<li>Governo Provisório (1930-1934)</li>
+				<li>Governo Constitucional (1934-1937)</li>
+				<li>Estado Novo (regime ditatorial de 1937 até 1945)</li>
+				</ul>
+				<p>A partir de 1930, as massas populares foram incorporadas ao processo político, sempre sob controle do governo varguista. Uma das reações contra a nova ordem política instalada pela Revolução de 1930, foi o Movimento Constitucionalista de 1932. O movimento ocorreu em São Paulo, onde as elites oligárquicas tentaram retomar o controle político. Em 1933, Getúlio Vargas promoveu eleições para a Assembleia Constituinte, que promulgou a nova Constituição em 16 de julho de 1934.</p>
+				<p>O período do governo constitucionalista de Getúlio Vargas foi uma fase marcada pelo choque de duas correntes ideológicas: a Ação Integralista Brasileira (AIB), de inspiração fascista, e a Aliança Nacional Libertadora (ANL), movimento da frente popular de orientação socialista. Ambas faziam oposição a Vargas. Tais movimentos eram reflexos da conjuntura internacional do período, marcado pela polarização entre esquerda (comunistas e socialistas) e direita (fascismo e nazismo), com a ascensão de regimes totalitários de ambos os lados. Após a Intentona Comunista de 1935, uma tentativa fracassada de revolução, liderada por Luís Carlos Prestes e membros da ANL, Getúlio Vargas intensifica a repressão aos seus opositores. Em 1937, documentos falsos (Plano Cohen) foram usados para forjar uma “ameaça comunista”. Este foi o pretexto para o fechamento do Congresso, cancelamento das eleições presidenciais e a anulação da Constituição de 1934, dando início ao Estado Novo.</p>
+				<p>No mesmo dia do golpe, foi outorgada a nova Constituição Brasileira, inspirada na constituição polonesa. O período do Estado Novo é marcado pela extinção dos partidos políticos e das eleições, pela censura e perseguição aos inimigos do regime e pela construção da figura de Vargas como líder carismático (pai dos pobres) por meio da propaganda nacionalista. A economia se caracterizava pelo chamado nacionalismo econômico e investimentos na indústria de base. A participação do Brasil na Segunda Guerra Mundial (1939-1945) contra os nazistas abalou o Estado Novo, pois colocou em evidência a contradição de lutar contra uma ditadura e viver num regime sem democracia. Diversos setores da sociedade brasileira começam a estabelecer articulações contra o regime varguista. Assim, em 29 de outubro de 1945, Getúlio Vargas foi deposto da presidência do Brasil.</p>
+				
+				<h3>República Populista (1945-1964)</h3>
+				<p>Após a deposição de Getúlio Vargas, seu ex-ministro da guerra, general Eurico Gaspar Dutra, venceu as eleições de dezembro de 1945. Em 18 de setembro de 1946 foi promulgada a quinta Constituição brasileira. Essa carta, que garantiu os direitos civis e eleições livres, iria reger a vida do país por mais de duas décadas.</p>
+				<p><strong>Foram presidentes desse período:</strong></p>
+				<ul> 
+				<li>Eurico Gaspar Dutra (1946-1951);</li>
+				<li>Getúlio Vargas (1951-1954);</li>
+				<li>Café Filho (1954-1955);</li>
+				<li>Carlos Luz (1955);</li>
+				<li>Nereu Ramos (1955-1956);</li>
+				<li>Juscelino Kubitschek (1956-1960);</li>
+				<li>Jânio Quadros (1961);</li>
+				<li>João Goulart (1961-1964).</li>
+				<ul>
+				<p>Getúlio Vargas venceu as eleições de 1950, cinco anos após ser derrubado do poder. Com sua política nacionalista, recebeu o apoio das classes populares, de setores da burguesia, dos grupos políticos ligados ao trabalhismo e de parte do Exército. Vargas enfrentou forte oposição da União Democrática Nacional (UDN), que tinha Carlos Lacerda (1914-1977) como seu principal porta-voz e pregava a destituição do presidente, acusando pessoas ligadas ao governo de corrupção. Vargas também era acusado de pretender instalar uma república sindicalista no Brasil, regime semelhante ao que Perón havia instalado na Argentina. Com o crescimento da oposição a Vargas, mesmo entre setores que antes o apoiavam, e a escalada de acusações, incluindo a de envolvimento no atentado contra Carlos Lacerda, a crise do governo se agravou. Em decorrência disso, Getúlio Vargas comete suicídio em 24 de agosto de 1954.</P>
+				<p>Nos dezessete meses que sucederam à morte de Vargas, três presidentes ocuparam o poder: Café Filho, Carlos Luz e Nereu Ramos. A situação política era difícil. Em 1955, houve novas eleições para presidente e Juscelino Kubitschek foi eleito, com a promessa de realizar "cinquenta anos de progresso em cinco anos de governo". Sua administração foi marcada por obras de grande repercussão, entre elas a construção de Brasília, a nova capital do país. Em 1961, o populista Jânio Quadros foi eleito. Ele renunciou, contudo, em 25 de agosto. De acordo com a Constituição, o vice João Goulart deveria assumir a presidência.</P>
+				<p>Houve, porém, um veto militar à posse de Jânio Quadros (Jango), acusado de comunista. A solução para a crise política foi a promulgação da Emenda Constitucional nº 4, que instituiu o sistema parlamentarista de governo no país. A emenda limitava o poder do presidente. João Goulart, empossado em 7 de setembro de 1961, colocava em prática uma política nacionalista. Um plebiscito realizado em 1963 determinou a volta do regime presidencialista. Em 31 de março de 1964, um golpe militar contra o governo derrubou João Goulart. Em 9 de abril, foi promulgado o Ato Institucional nº 1, que dava amplos poderes ao Alto Comando Militar.</P>
+				
+				<h3>Ditadura Civil-Militar (1964-1985)</h3>
+				<p>O período que vai de 1964 a 1985 foi marcado pela presença de militares na vida política brasileira. Durante duas décadas, foi estabelecido um regime autoritário e centralizador.</P>
+				<p><strong>Os presidentes desse período foram:</strong></p>
+				<ul> 
+				<li>Marechal Castelo Branco (1964-1967);</li>
+				<li>General Costa e Silva (1967-1969);</li>
+				<li>General Médici (1969-1974);</li>
+				<li>General Ernesto Geisel (1974-1979);</li>
+				<li>General Figueiredo (1979-1985).</li>
+				<ul>
+				<p>No contexto da Guerra Fria, a Ditadura brasileira era apoiada pelos EUA, que passou a intervir ativamente nos países da América Latina para impedir o crescimento das ideias consideradas comunistas. Tal apoio deu abertura ao crescimento da economia (milagre econômico), mas também ampliou drasticamente a dívida externa brasileira.</p>
+				<p>Durante esse período, a história do Brasil ficou marcada pela restrição à liberdade, repressão violenta aos opositores do regime, censura e diversas violações dos direitos humanos.</p>
+				<p>Em agosto de 1979, foi assinada a Lei da Anistia, suspendendo as penalidades impostas aos opositores do regime militar e, ao mesmo tempo, perdoando os crimes cometidos pelos militares.</p>
+				<p>Em 1982, a sociedade brasileira começou a organizar a campanha das Diretas Já, para a realização de eleições diretas para a Presidência da República. Porém, o movimento foi derrotado, e o primeiro presidente civil após 21 anos de ditadura foi eleito de forma indireta pelo Congresso.</p>
+				<p>Em 15 de janeiro de 1985, Tancredo foi eleito Presidente pelo Congresso Nacional.</p>
+				
+				<h3>Nova República (1985 até os dias atuais)</h3>
+				<p>A eleição de Tancredo Neves (1910-1985) iniciou uma nova fase da história republicana. No entanto, Tancredo não chegou a exercer o cargo.</p>
+				<p>A doença e a morte de Tancredo abalaram o país. Com a morte de Tancredo, assumiu a Presidência, em caráter definitivo, o vice José Sarney. Se sucederam no poder:</p>
+				<ul>
+				<li>Fernando Collor (1990-1992)</li>
+				<li>Itamar Franco (1992-1994)</li>
+				<li>Fernando Henrique Cardoso (1995-2002)</li>
+				<li>Luiz Inácio Lula da Silva (2003-2010)</li>
+				<li>Dilma Rousseff (2011-2016)</li>
+				<li>Michel Temer (2016-2018)</li>
+				<li>Jair Messias Bolsonaro (2019-2022)</li>
+				<li>Luiz Inácio Lula da Silva (2023 - atual)</li>
+				</ul>
+				
+				
+				
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 História do Brasil - Todos os direitos reservados</p>
+            <p>Desenvolvido com fins educacionais</p>
+            <p>Avalie este site enviando um email neste endereço: gustavoarasantos23@gmail.com</p>
+        </div>
+    </footer>
+</body>
+</html>
